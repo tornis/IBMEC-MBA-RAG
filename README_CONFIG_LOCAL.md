@@ -505,10 +505,14 @@ loginctl enable-linger "$USER"
 OPENSEARCH_HOST=localhost
 OPENSEARCH_PORT=9200
 OPENSEARCH_USER=admin
-OPENSEARCH_PASSWORD=<senha definida acima>
+OPENSEARCH_PASS=<senha definida acima>
 # Desativar verificação TLS em labs locais
-OPENSEARCH_USE_SSL=true
+OPENSEARCH_USE_SSL=false
 OPENSEARCH_VERIFY_CERTS=false
+
+# Perfil PRODUÇÃO
+OPENSEARCH_USE_SSL=true
+OPENSEARCH_VERIFY_CERTS=true
 ```
 
 ---
@@ -659,6 +663,10 @@ langflow run --host 0.0.0.0 --port 7860
 ```bash
 # Criar volume para persistir flows salvos
 podman volume create langflow-data
+
+# Gerar senha administrativa antes do podman run
+LANGFLOW_ADMIN_PASSWORD=$(openssl rand -hex 16)
+export LANGFLOW_ADMIN_PASSWORD
 
 # Executar container
 podman run -d --name langflow \
@@ -830,5 +838,13 @@ EOF
 - **Volumes Podman rootless**: O uso do flag `:z` foi consolidado nos comandos acima por prover a marcação SELinux adequada de diretórios mapeados, garantindo perms consistentes entre o container rootless e o file system hospedeiro. Em distribuições baseadas unicamente no AppArmor (como no padrão do Ubuntu Server 22.04 LTS), ele será ignorado com segurança sem prejuízos.
 - **Tracking de Versão**: Todas as versões indexadas apontam para referências testadas (maio 2026). Dada a alta volatilidade do ecossistema AI, é necessário executar `pip index versions <pacote>` nos deploy scripts antes de promover ao ambiente de produção ou validação final.
 - **Restrições Ollama CPU**: Funcionalidade garantida para sandboxes baseados em modelos Q4 (≤ 3B), mas as latências (10–30s de intersecção) o tornam proibitivo para avaliações sistemáticas via frameworks RAGAS em lote.
+- 
+- # Antes da instalação em cada VM:
+pip index versions vllm
+pip index versions langflow
+pip index versions fastapi
+pip index versions uvicorn
+pip index versions docling
+# e validar releases oficiais de OpenSearch, Langfuse e Ollama
 
 
