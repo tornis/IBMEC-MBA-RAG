@@ -585,23 +585,50 @@ python -c "from llmlingua import PromptCompressor; print('OK')"
 <a name="anexo-5-opensearch"></a>
 ## Anexo 5 — OpenSearch
 
-### Instalação no Ubuntu Server (nativo)
+### Instalação no Debian Server (nativo)
 
 ```bash
-# 1. Ajuste de kernel obrigatório
+## Comandos para instalação obtidos através do guia oficial (https://docs.opensearch.org/latest/install-and-configure/install-opensearch/debian/)
+
+#  Ajuste de kernel obrigatório
 echo 'vm.max_map_count=262144' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 
-# 2. Adicionar repositório APT
-curl -o- https://artifacts.opensearch.org/publickeys/opensearch.pgp \
-  | sudo gpg --dearmor -o /usr/share/keyrings/opensearch-keyring.gpg
+## Instalar pacotes necessários:
+sudo apt-get update && sudo apt-get -y install lsb-release ca-certificates curl gnupg2
 
-echo "deb [signed-by=/usr/share/keyrings/opensearch-keyring.gpg] \
-  https://artifacts.opensearch.org/releases/bundle/opensearch/3.x/apt stable main" \
-  | sudo tee /etc/apt/sources.list.d/opensearch.list
+## Criar novo diretório keyrings:
+sudo mkdir -p /etc/apt/keyrings
+
+## Importar chave GPG pública.Essa chave é usada para verificar se o repositório APT está assinado.
+curl -fsSL https://artifacts.opensearch.org/publickeys/opensearch-release.pgp \
+ | sudo gpg --dearmor -o /etc/apt/keyrings/opensearch.gpg
+
+## Criar um repositório APT para o OpenSearch:
+echo "deb [signed-by=/etc/apt/keyrings/opensearch.gpg] https://artifacts.opensearch.org/releases/bundle/opensearch/3.x/apt stable main" \
+| sudo tee /etc/apt/sources.list.d/opensearch-3.x.list
+
+## Com as informações do repositório adicionadas, liste todas as versões disponíveis do OpenSearch:
+sudo apt list -a opensearch
+
+# Para novas instalações do OpenSearch 2.12 e versões posteriores, você deve definir uma senha de administrador personalizada.
+# Definir uma senha de administrador personalizada:
+sudo env OPENSEARCH_INITIAL_ADMIN_PASSWORD='@MinhaSenhaSegura123!@' apt-get install opensearch
+
+## Habilite o OpenSearch
+sudo systemctl enable opensearch
+
+## Inicie o OpenSearch
+sudo systemctl start opensearch
+
+## Verifique se está Ok
+sudo systemctl status opensearch
+
 ```
 
-#### Perfil LAB_LOCAL (sem SSL e sem autenticação)
+##
+
+#### Perfil LAB_LOCAL (testado em Debian 13)
 
 ```bash
 # 3. Instalar
@@ -624,35 +651,12 @@ sudo systemctl enable opensearch
 sudo systemctl start opensearch
 
 # 7. Verificar
-curl http://localhost:9200
+curl http://127.0.0.1:9200
 ```
 
-#### Perfil PRODUCAO (com SSL e autenticação)
 
-```bash
-# 3. Definir senha inicial do admin (não commitar em scripts)
-read -s -p "Senha inicial admin OpenSearch: " OPENSEARCH_INITIAL_ADMIN_PASSWORD
-export OPENSEARCH_INITIAL_ADMIN_PASSWORD
 
-# 4. Instalar
-sudo apt-get update
-sudo -E apt-get install -y opensearch
-
-# 5. Configurar heap no arquivo jvm.options
-sudo tee /etc/opensearch/jvm.options.d/heap.options > /dev/null <<'EOF'
--Xms2g
--Xmx2g
-EOF
-
-# 6. Habilitar e iniciar
-sudo systemctl enable opensearch
-sudo systemctl start opensearch
-
-# 7. Verificar endpoint HTTPS (certificado pode ser self-signed no bootstrap)
-curl -k -u admin:"$OPENSEARCH_INITIAL_ADMIN_PASSWORD" https://localhost:9200
-```
-
-### Instalação via container Podman
+### Instalação via container Podman (testado Debian 13)
 
 ```bash
 # 1. Ajuste de kernel obrigatório no HOST (não no container)
@@ -1002,4 +1006,28 @@ converter = DocumentConverter()
 result = converter.convert("documento.pdf")
 print(result.document.export_to_markdown()[:500])
 EOF
+```
+---
+
+<a name="anexo-11-podman"></a>
+## Anexo 11 — Podman
+
+### Instalação no Ubuntu Server
+
+```bash
+# Instalar o podman
+sudo apt install -y podman
+
+# Testar a instalação (output: podman version 5.4.2)
+podman --version
+
+# Testar  com container Hello World 
+podman run --rm hello-world
+
+# Instalar o podman-compose com uv 
+uv tool install podman-compose
+
+# Opcional
+
+
 ```
