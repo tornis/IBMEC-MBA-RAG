@@ -35,7 +35,7 @@ Ao final desta aula, o aluno será capaz de:
 
 - Compreender a evolução de modelos de linguagem: bag-of-words → Word2Vec → Transformers → LLMs
 - Entender representações vetoriais de texto e métricas de similaridade semântica
-- Configurar e validar o ambiente completo: OpenSearch, vLLM, LangFuse
+- Configurar e validar o ambiente completo: OpenSearch, Ollama, LangFuse
 - Executar o primeiro pipeline de embeddings e comparar modelos BGE-M3 vs sentence-transformers
 - Compreender o problema que RAG resolve e visualizar o panorama das 25 técnicas do curso
 
@@ -44,9 +44,9 @@ Ao final desta aula, o aluno será capaz de:
 | Bloco | Conteúdo | Tempo |
 |-------|----------|-------|
 | Bloco 1 (Teoria) | Tópicos 1-4: NLP → Transformers | 45 min |
-| Lab 1 + Lab 2 | Instalação Docker/OpenSearch + Setup Colab | 50 min |
+| Lab 1 + Lab 2 | Instalação Docker/OpenSearch + Setup Ambiente Local | 50 min |
 | Bloco 2 (Teoria) | Tópicos 5-7: LLMs → RAG → Panorama | 30 min |
-| Lab 3 + Lab 4 | vLLM + LangFuse | 45 min |
+| Lab 3 + Lab 4 | Ollama + LangFuse | 45 min |
 | Lab 5 | Embeddings + UMAP + Discussão | 60 min |
 | Exercícios | Fixação e revisão | 30 min |
 
@@ -198,7 +198,7 @@ O **Positional Encoding** resolve um problema fundamental: diferente das redes r
 
 Large Language Models (LLMs) são modelos Transformer apenas-decoder treinados em escalas anteriormente inimagináveis: trilhões de tokens de texto, bilhões a trilhões de parâmetros, meses de treinamento em milhares de GPUs. O que torna os LLMs qualitativamente diferentes de modelos menores não é apenas a escala — é o fenômeno das **capacidades emergentes**: habilidades que simplesmente não existem em modelos menores e aparecem abruptamente quando um limiar de tamanho é ultrapassado. Raciocínio em múltiplos passos (chain-of-thought), aritmética, seguir instruções complexas, tradução zero-shot — nenhuma dessas capacidades foi explicitamente treinada, elas emergiram da escala.
 
-Os principais modelos de código aberto relevantes para este curso são: **Llama 3.1** (Meta, 2024) disponível em versões 8B, 70B e 405B parâmetros, com contexto de 128k tokens; **Mistral 7B** (Mistral AI, 2023), notável por superar o Llama 2 13B com apenas 7B parâmetros através de atenção com janela deslizante eficiente; e **Mixtral 8x7B**, um modelo de mistura de especialistas (MoE) que ativa apenas 2 dos 8 "especialistas" por token, oferecendo qualidade de 47B com custo de 13B. Para ambientes locais (sem enviar dados sensíveis para APIs externas — requisito fundamental em sistemas jurídicos e de segurança pública), utilizaremos **vLLM** para servir esses modelos localmente com alto desempenho via PagedAttention.
+Os principais modelos de código aberto relevantes para este curso são: **Llama 3.1** (Meta, 2024) disponível em versões 8B, 70B e 405B parâmetros, com contexto de 128k tokens; **Mistral 7B** (Mistral AI, 2023), notável por superar o Llama 2 13B com apenas 7B parâmetros através de atenção com janela deslizante eficiente; e **Mixtral 8x7B**, um modelo de mistura de especialistas (MoE) que ativa apenas 2 dos 8 "especialistas" por token, oferecendo qualidade de 47B com custo de 13B. Para ambientes locais (sem enviar dados sensíveis para APIs externas — requisito fundamental em sistemas jurídicos e de segurança pública), utilizaremos **Ollama** para servir esses modelos localmente via API REST (compatível com o padrão OpenAI), sem necessidade de configuração de CUDA ou drivers complexos.
 
 Os **parâmetros de geração** controlam o comportamento do modelo durante a inferência. **Temperature** (valores 0.0 a 2.0) controla a "criatividade": temperature=0 torna o modelo completamente determinístico (sempre escolhe o token de maior probabilidade), temperature=1.0 é o padrão, temperature>1.5 gera texto cada vez mais caótico. Para análises jurídicas onde precisão é crítica, use temperature=0.1 a 0.3. Para geração de alternativas criativas em brainstorming, temperature=0.7 a 1.0. **Top-p** (nucleus sampling, valores 0.0 a 1.0) restringe a geração ao conjunto de tokens que perfazem uma probabilidade acumulada p — top-p=0.9 considera apenas os tokens que juntos respondem por 90% da probabilidade, ignorando os 10% menos prováveis. **Max_tokens** (ou max_new_tokens) limita o tamanho da resposta.
 
@@ -207,7 +207,7 @@ Para sistemas RAG em contexto jurídico e de segurança pública, a escolha do m
 ---
 
 > ### 💡 INSIGHT — Soberania de Dados em Sistemas Jurídicos
-> Processos sob segredo de justiça, investigações policiais em curso e dados de vítimas não podem ser enviados para APIs externas (OpenAI, Anthropic, Google). O uso de LLMs locais via **vLLM** não é apenas uma escolha técnica — é muitas vezes um **requisito legal** (LGPD, sigilo funcional) e ético. Este curso prioriza soluções *on-premise* e *air-gapped* justamente por essa razão.
+> Processos sob segredo de justiça, investigações policiais em curso e dados de vítimas não podem ser enviados para APIs externas (OpenAI, Anthropic, Google). O uso de LLMs locais via **Ollama** não é apenas uma escolha técnica — é muitas vezes um **requisito legal** (LGPD, sigilo funcional) e ético. Este curso prioriza soluções *on-premise* e *air-gapped* justamente por essa razão.
 
 ---
 
@@ -215,7 +215,7 @@ Para sistemas RAG em contexto jurídico e de segurança pública, a escolha do m
 
 **Pergunta 1:** Um perito forense quer usar um LLM para analisar comunicações interceptadas legalmente. Por que ele **não deve** usar a API do ChatGPT/GPT-4, mesmo que ofereça a melhor qualidade de análise?
 
-> **Resposta:** (1) **LGPD**: Dados de investigações criminais contendo informações pessoais de investigados são dados sensíveis; enviá-los para servidores da OpenAI (EUA) constitui transferência internacional de dados pessoais sem adequação legal. (2) **Sigilo funcional**: As comunicações interceptadas estão sob sigilo judicial; compartilhá-las com terceiros (mesmo uma empresa de tecnologia) pode configurar violação de sigilo profissional ou mesmo crime. (3) **Cadeia de custódia**: Em uma eventual ação penal, a defesa poderia questionar a integridade das provas processadas por sistemas externos não auditáveis. A alternativa correta é usar LLMs locais (Llama, Mistral via vLLM) em servidores sob controle da instituição.
+> **Resposta:** (1) **LGPD**: Dados de investigações criminais contendo informações pessoais de investigados são dados sensíveis; enviá-los para servidores da OpenAI (EUA) constitui transferência internacional de dados pessoais sem adequação legal. (2) **Sigilo funcional**: As comunicações interceptadas estão sob sigilo judicial; compartilhá-las com terceiros (mesmo uma empresa de tecnologia) pode configurar violação de sigilo profissional ou mesmo crime. (3) **Cadeia de custódia**: Em uma eventual ação penal, a defesa poderia questionar a integridade das provas processadas por sistemas externos não auditáveis. A alternativa correta é usar LLMs locais (Llama, Mistral via Ollama) em servidores sob controle da instituição.
 
 **Pergunta 2:** Por que usar temperature=0.0 ao gerar uma conclusão jurídica, mas temperature=0.7 ao gerar sugestões de argumentos para uma peça processual?
 
