@@ -255,6 +255,35 @@ def advanced_rag_pipeline(query: str) -> str:
     return response
 ```
 
+### 4.3 Infraestrutura LLM da Aula 3 — Groq + Ollama (Fallback)
+
+A partir desta aula, o pipeline de geração passa a depender de um LLM real para query rewriting, geração de respostas e, em alguns labs, para reranking baseado em LLM. Para garantir baixa latência didática **e** portabilidade local, o curso adota uma estratégia de **dois provedores em cascata**:
+
+| Camada | Provedor | Modelo | Endpoint | Quando é usado |
+|---|---|---|---|---|
+| **Primário** | **Groq Cloud** | `llama-3.1-8b-instant` | `https://api.groq.com/openai/v1` | Sempre que `GROQ_API_KEY` estiver presente no `.env` e a API responder |
+| **Fallback** | **Ollama local** | `llama3.2:3b` (padrão) ou `llama3.1:8b` | `http://localhost:11434/v1` | Automaticamente, se Groq estiver indisponível ou a chave faltar |
+
+Ambos os provedores expõem **API OpenAI-compatible**, o que permite trocar apenas `base_url` + `api_key` sem reescrever o pipeline. O snippet padrão dos labs detecta o provedor em tempo de execução com um *smoke test* leve (1 chamada de 2 tokens) e propaga `LLM_PROVIDER` e `MODEL_NAME` para o LangFuse via `metadata`, permitindo análise de custo/latência por provedor nos dashboards.
+
+> **Nota didática — Por que `llama-3.1-8b-instant` da Groq?**
+> O modelo `llama-3.1-8b-instant` é o melhor compromisso entre custo, contexto (128k tokens) e velocidade no Groq (~750 tokens/s). É suficiente para tarefas jurídicas brasileiras de query rewriting e geração curta, e o aluno tem **free tier** generoso para concluir todos os labs sem cartão de crédito.
+>
+> **Por que Ollama como fallback (e não vLLM)?**
+> O Ollama instala em minutos em Windows/macOS/Linux **sem exigir GPU NVIDIA** e usa o mesmo schema OpenAI-compatible. O vLLM (servidor de produção com PagedAttention) continua sendo a referência para deploy em GPU dedicada — abordado apenas na **Aula 12 (Projeto Final)**, não nos labs didáticos.
+
+**Variáveis lidas pelos labs (definidas em `~/mba-rag/.env`):**
+
+```
+GROQ_API_KEY=gsk_...
+GROQ_LLM_MODEL=llama-3.1-8b-instant
+OLLAMA_BASE_URL=http://localhost:11434
+OLLAMA_LLM_MODEL=llama3.2:3b
+OLLAMA_EMBED_MODEL=bge-m3
+```
+
+> **Atenção:** embeddings continuam **sempre via Ollama** (`bge-m3`, 1024 dims), com fallback para `HuggingFaceEmbeddings(BAAI/bge-m3)`. Groq não oferece API de embeddings — apenas LLMs.
+
 ---
 
 ## Seção 5 — Modular RAG: Arquitetura Desacoplada
@@ -281,7 +310,7 @@ Isso é análogo ao conceito de **injeção de dependência** em engenharia de s
 │             │              │  FAISS       │  KeyBERT Filter      │
 ├─────────────┴──────────────┴──────────────┴───────────────────── ┤
 │                      MODULE 5: GENERATION                         │
-│                   Llama 3.1 (vLLM) / GPT-4o / Gemini             │
+│       Groq API (llama-3.1-8b-instant) / Ollama local fallback     │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
@@ -434,7 +463,7 @@ A Anthropic documentou internamente que pipelines Advanced RAG com reranking mel
 
 **Exercício 3 — Análise de Trade-off:** Um sistema policial precisa responder a queries em menos de 1 segundo. Considerando os tempos típicos de reranking (2–3s), como você redesenharia o pipeline para manter a precisão do Advanced RAG dentro da restrição de latência?
 
-**Exercício 4 — Modularidade:** Desenhe o diagrama de classes Python (usando ABCs) para um pipeline Modular RAG que suporte: 3 retrievers (OpenSearch, ChromaDB, FAISS), 2 rerankers (BGE-Reranker, LLM-based), 2 geradores (vLLM, OpenAI API).
+**Exercício 4 — Modularidade:** Desenhe o diagrama de classes Python (usando ABCs) para um pipeline Modular RAG que suporte: 3 retrievers (OpenSearch, ChromaDB, FAISS), 2 rerankers (BGE-Reranker, LLM-based), 2 geradores (Groq API com `llama-3.1-8b-instant`, Ollama local com `llama3.2:3b`).
 
 **Exercício 5 — LangFuse:** Num trace hipotético, o span de reranking tem latência de 8 segundos para top-20 documentos. Identifique duas otimizações possíveis e explique o impacto esperado de cada uma.
 

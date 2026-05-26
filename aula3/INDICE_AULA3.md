@@ -3,7 +3,7 @@
 ### MBA em RAG & CAG Aplicados a Direito e Segurança Pública
 
 **Aula:** 3 de 12 | **Carga:** 5h | **Proporção:** 30% teoria / 70% prática  
-**Pré-requisito:** Aula 2 concluída (Naive RAG + Baseline registrado) | **Stack:** BGE-Reranker · LangChain · LlamaIndex · LangFuse · OpenSearch · ChromaDB · vLLM
+**Pré-requisito:** Aula 2 concluída (Naive RAG + Baseline registrado) | **Stack:** BGE-Reranker · LangChain · LangFuse · OpenSearch · ChromaDB · **Groq API** (`llama-3.1-8b-instant`) com **Ollama local** como fallback
 
 ---
 
@@ -69,15 +69,16 @@ Ao final desta aula, o aluno será capaz de:
 
 | Componente | Ferramenta | Papel no Pipeline |
 |---|---|---|
-| Query Rewriting | **Llama 3.1 8B Instruct** (via vLLM) | Reformulação de queries antes do retrieval |
+| Query Rewriting | **`llama-3.1-8b-instant` via Groq API** | Reformulação de queries antes do retrieval |
 | Reranking | **BGE-Reranker-v2-m3** (BAAI) | Cross-encoder para reordenar top-K resultados |
-| Embeddings | **BGE-M3** (BAAI, dim=1024) | Vetorização multilíngue (herdado da Aula 2) |
+| Embeddings | **BGE-M3** (BAAI, dim=1024) — servido via Ollama | Vetorização multilíngue (herdado da Aula 2); fallback HuggingFace |
 | Vector Store Principal | **OpenSearch kNN** | Retriever primário |
 | Vector Store Alternativo | **ChromaDB** | Retriever intercambiável (demo Modular RAG) |
-| LLM | **Llama 3.1 8B Instruct** | Geração de respostas jurídicas |
-| Servidor LLM | **vLLM** (PagedAttention) | API OpenAI-compatible em GPU |
+| LLM | **`llama-3.1-8b-instant`** (Groq) ou `llama3.2:3b` (Ollama local) | Geração de respostas jurídicas |
+| Servidor LLM primário | **Groq Cloud API** (OpenAI-compatible, baixa latência) | LLM-as-a-service para todos os labs |
+| Servidor LLM fallback | **Ollama local** em `http://localhost:11434/v1` | Provisionado na Aula 1; usado automaticamente se Groq indisponível |
 | Orquestração | **LangChain LCEL** | Pipeline modular e composável |
-| Observabilidade | **LangFuse** | Traces, spans, latência por módulo |
+| Observabilidade | **LangFuse** | Traces, spans, latência por módulo (provider e modelo propagados via metadata) |
 
 ---
 
@@ -136,6 +137,8 @@ CHEN, J. et al. **BGE M3-Embedding: Multi-Lingual, Multi-Functionality, Multi-Gr
 
 LANGFUSE. **LangFuse Documentation**. Disponível em: <https://langfuse.com/docs>. Acesso em: abr. 2026.
 
-KWON, W. et al. **Efficient Memory Management for LLM Serving with PagedAttention**. *ACM SOSP*, 2023.
+GROQ INC. **Groq API Documentation — OpenAI-compatible LLM Inference**. Disponível em: <https://console.groq.com/docs>. Acesso em: maio 2026.
+
+OLLAMA. **Ollama Documentation — Local LLM Serving with OpenAI-compatible API**. Disponível em: <https://github.com/ollama/ollama/blob/main/docs/openai.md>. Acesso em: maio 2026.
 
 MA, X. et al. **Query Rewriting for Retrieval-Augmented Large Language Models**. arXiv:2305.14283, 2023.
