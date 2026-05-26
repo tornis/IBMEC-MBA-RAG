@@ -1,0 +1,6 @@
+﻿query_id,categoria,top1_esperado,top1_recuperado,hit_at_1,hit_at_k,rank,rr,score_medio,retrieval_relevance,answer_completeness,faithfulness,citation_quality,legal_utility,tempo_total_ms
+Q1,Recomendações de Auditoria,ACORDAO-COMPLETO-2765836,ACORDAO-COMPLETO-2765836,True,True,1,1.0,4.8,5,5,5,4,5,4407.38
+Q2,Causa de Decisão,ACORDAO-COMPLETO-2756361,ACORDAO-COMPLETO-2756361,True,True,1,1.0,4.8,5,5,5,4,5,2550.79
+Q3,Valor + Justificativa,ACORDAO-COMPLETO-2752522,ACORDAO-COMPLETO-2752522,True,True,1,1.0,4.0,5,4,4,3,4,1848.38
+Q4,Condenação + Base Legal,ACORDAO-COMPLETO-2758568,ACORDAO-COMPLETO-2758568,True,True,1,1.0,3.4,4,3,4,3,3,2217.17
+Q5,Análise Discriminada,ACORDAO-COMPLETO-2763267,ACORDAO-COMPLETO-2763267,True,True,1,1.0,2.4,3,2,3,2,2,1810.57

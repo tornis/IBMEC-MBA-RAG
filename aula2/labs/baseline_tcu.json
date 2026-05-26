@@ -1,0 +1,137 @@
+{
+  "metadata": {
+    "aula": "Aula 2 - Lab 5",
+    "dominio": "Acórdãos do TCU 2026",
+    "data_criacao": "2026-05-26T11:40:53.925333",
+    "versao": "0.0",
+    "csv_corpus": "D:\\IBMEC\\MBA_RAG_CAG\\aula2\\datasets\\acordao-completo-2026.csv",
+    "docs_indexados": 5,
+    "modo_corpus": "reduzido (TOP-1 esperados)"
+  },
+  "configuracao": {
+    "embeddings": "Ollama(bge-m3)",
+    "embed_dim": 1024,
+    "llm": "Groq Cloud (llama-3.1-8b-instant)",
+    "k_retrieval": 5,
+    "temperatura": 0,
+    "num_queries": 5
+  },
+  "metricas_recuperacao": {
+    "hit_at_1": 1.0,
+    "hit_at_k": 1.0,
+    "mrr": 1.0
+  },
+  "metricas_qualitativas": {
+    "score_geral_ponderado": 3.88,
+    "scores_dimensao": {
+      "Relevância do Contexto Recuperado": 4.4,
+      "Completude da Resposta": 3.8,
+      "Fidelidade ao Contexto / Anti-Alucinação": 4.2,
+      "Qualidade das Citações": 3.2,
+      "Utilidade Jurídica": 3.8
+    }
+  },
+  "tempos_medios_ms": {
+    "embedding": 832.92,
+    "retrieval": 416.83,
+    "llm": 1317.11,
+    "total": 2566.86
+  },
+  "resultados_por_query": [
+    {
+      "id": "Q1",
+      "categoria": "Recomendações de Auditoria",
+      "query": "Quais recomendações o TCU fez ao Ministério da Saúde em relação aos indicadores do Plano Plurianual (PPA) na auditoria operacional sobre os recursos federais aplicados na função Saúde em 2025?",
+      "top1_esperado": "ACORDAO-COMPLETO-2765836",
+      "keys_recuperados": [
+        "ACORDAO-COMPLETO-2765836",
+        "ACORDAO-COMPLETO-2763267",
+        "ACORDAO-COMPLETO-2756361",
+        "ACORDAO-COMPLETO-2752522",
+        "ACORDAO-COMPLETO-2758568"
+      ],
+      "hit_at_1": true,
+      "hit_at_k": true,
+      "rank": 1,
+      "rr": 1.0,
+      "tempo_total_ms": 4407.38,
+      "resposta_llm": "Em relação à pergunta, o TCU fez as seguintes recomendações ao Ministério da Saúde em relação aos indicadores do Plano Plurianual (PPA) na auditoria operacional sobre os recursos federais aplicados na função Saúde em 2025:\n\n1. **Recomendação 9.1.2**: Promova a revisão progressiva dos indicadores e das metas dos programas da função saúde no PPA, com vistas a ampliar a participação de indicadores de resultado e impacto, especialmente nos programas de maior relevância orçamentária e estratégica. [ACÓRDÃO 1199/2026 – ATA 16/2026 – PLENÁRIO | KEY: ACORDAO-COMPLETO-2765836]\n\n2. **Recomendação 9.1.4**: Institua, no âmbito do planejamento e da programação orçamentária, procedimento estruturado para identificar e tratar previamente os riscos de execução de ações orçamentárias, especialmente aquelas de natureza estruturante ou de elevada complexidade operacional, contemplando, no mínimo: a definição de critérios objetivos para classificar as ações com maiores riscos de execução, tais como complexidade técnica, volume de recursos, dependência de terceiros e histórico de execução; identificar previamente ações no processo de planejamento e programação; adotar estratégias diferenciadas de acompanhamento e gestão para tais ações, incluindo, quando cabível, o estabelecimento de marcos intermediários, planos de mitigação de riscos e mecanismos de monitoramento mais frequentes; e registrar as principais restrições e riscos identificados, de modo a subsidiar o aprimoramento do planejamento em ciclos posteriores. [ACÓRDÃO 1199/2026 – ATA 16/2026 – PLENÁRIO | KEY: ACORDAO-COMPLETO-2765836]\n\nEssas recomendações visam melhorar a gestão dos recursos públicos federais aplicados na função Saúde, garantindo que os indicadores do Plano Plurianual sejam mais eficazes e eficientes na obten"
+    },
+    {
+      "id": "Q2",
+      "categoria": "Causa de Decisão",
+      "query": "Por qual motivo a empresa representante foi desclassificada no Pregão Eletrônico PE-90032-A/2025 do CREA-MG para contratação de plataforma LMS?",
+      "top1_esperado": "ACORDAO-COMPLETO-2756361",
+      "keys_recuperados": [
+        "ACORDAO-COMPLETO-2756361",
+        "ACORDAO-COMPLETO-2752522",
+        "ACORDAO-COMPLETO-2763267",
+        "ACORDAO-COMPLETO-2758568",
+        "ACORDAO-COMPLETO-2765836"
+      ],
+      "hit_at_1": true,
+      "hit_at_k": true,
+      "rank": 1,
+      "rr": 1.0,
+      "tempo_total_ms": 2550.79,
+      "resposta_llm": "A empresa representante foi desclassificada no Pregão Eletrônico PE-90032-A/2025 do CREA-MG para contratação de plataforma LMS devido ao descumprimento objetivo do item 9.3 do edital, uma vez que a licitante, embora tenha admitido possuir os acessos necessários dentro do prazo, recusou-se deliberadamente a enviá-los à Comissão de Contratação, condicionando a entrega a uma manifestação deste Tribunal.\n\n[ACÓRDÃO 1393/2026 – TCU – 2ª Câmara | KEY: ACORDAO-COMPLETO-2756361]\n\nConsiderando que a desclassificação da empresa representante decorreu do descumprimento objetivo do item 9.3 do edital, uma vez que a licitante, embora tenha admitido possuir os acessos necessários dentro do prazo, recusou-se deliberadamente a enviá-los à Comissão de Contratação, condicionando a entrega a uma manifestação deste Tribunal; [ACÓRDÃO 1393/2026 – TCU – 2ª Câmara | KEY: ACORDAO-COMPLETO-2756361]\n\nConsiderando que o descumprimento de regra editalícia clara e objetiva torna a desclassificação da proposta um ato vinculado e obrigatório por parte da Administração, sob pena de violação ao princípio da vinculação ao instrumento convocatório; [ACÓRDÃO 1393/2026 – TCU – 2ª Câmara | KEY: ACORDAO-COMPLETO-2756361]\n\nConsiderando que a viabilidade do cumprimento das exigências técnicas e prazos do edital restou demonstrada pela empresa vencedora, a qual submeteu sua plataforma aos testes e comprovou aderência total aos 194 requisitos técnicos estabelecidos; [ACÓRDÃO 1393/2026 – TCU – 2ª Câmara | KEY: ACORDAO-COMPLETO-2756361]\n\nConsiderando que as alegações de fraude na plataforma de terceira empresa não foram acompanhadas de lastro probatório mínimo, e que o Crea-MG demonstrou ter conduzido a anál"
+    },
+    {
+      "id": "Q3",
+      "categoria": "Valor + Justificativa",
+      "query": "Qual foi o valor do suposto dano apontado na representação contra a Polícia Militar do Distrito Federal no Pregão Eletrônico 90042/2025, e qual a decisão do TCU quanto à necessidade de instaurar tomada de contas especial?",
+      "top1_esperado": "ACORDAO-COMPLETO-2752522",
+      "keys_recuperados": [
+        "ACORDAO-COMPLETO-2752522",
+        "ACORDAO-COMPLETO-2756361",
+        "ACORDAO-COMPLETO-2758568",
+        "ACORDAO-COMPLETO-2763267",
+        "ACORDAO-COMPLETO-2765836"
+      ],
+      "hit_at_1": true,
+      "hit_at_k": true,
+      "rank": 1,
+      "rr": 1.0,
+      "tempo_total_ms": 1848.38,
+      "resposta_llm": "**RESPOSTA**\n\nO valor do suposto dano apontado na representação contra a Polícia Militar do Distrito Federal no Pregão Eletrônico 90042/2025 foi de R$ 7.726,67.\n\n[ACÓRDÃO 587/2026 – TCU – Plenário | KEY: ACORDAO-COMPLETO-2752522]\n\nQuanto à necessidade de instaurar tomada de contas especial, o TCU decidiu que não era necessário, pois o suposto dano era inferior ao limite mínimo para instauração de tomada de contas especial.\n\n[ACÓRDÃO 587/2026 – TCU – Plenário | KEY: ACORDAO-COMPLETO-2752522]\n\nPortanto, o TCU indeferiu o pedido de adoção de medida cautelar e considerou a representação prejudicada, em razão do baixo risco, da baixa relevância e da reduzida materialidade de seu objeto.\n\n[ACÓRDÃO 587/2026 – TCU – Plenário | KEY: ACORDAO-COMPLETO-2752522]"
+    },
+    {
+      "id": "Q4",
+      "categoria": "Condenação + Base Legal",
+      "query": "Genésio Almeida Vinente foi condenado em tomada de contas especial por concessão irregular de benefício assistencial. Qual a multa aplicada e com base em qual artigo da Lei 8.443/1992?",
+      "top1_esperado": "ACORDAO-COMPLETO-2758568",
+      "keys_recuperados": [
+        "ACORDAO-COMPLETO-2758568",
+        "ACORDAO-COMPLETO-2752522",
+        "ACORDAO-COMPLETO-2763267",
+        "ACORDAO-COMPLETO-2765836",
+        "ACORDAO-COMPLETO-2756361"
+      ],
+      "hit_at_1": true,
+      "hit_at_k": true,
+      "rank": 1,
+      "rr": 1.0,
+      "tempo_total_ms": 2217.17,
+      "resposta_llm": "Genésio Almeida Vinente foi condenado em tomada de contas especial por concessão irregular de benefício assistencial. A multa aplicada foi de R$ 20.000,00, com base no art. 57 da Lei 8.443/1992, c/c o art. 267 do Regimento Interno do TCU.\n\n[ACÓRDÃO 1132/2026 – ATA 15/2026 – PLENÁRIO | 9.3.]\n\nA determinação de aplicação da multa foi feita no Acórdão 1132/2026, do Plenário, em 06/05/2026, que considerou revel o responsável Genésio Almeida Vinente, para todos os efeitos, e julgou irregulares as contas de Genésio Almeida Vinente, condenando-o ao pagamento das importâncias a seguir especificadas, atualizadas monetariamente e acrescidas dos juros de mora, calculados a partir das datas discriminadas até a data da efetiva quitação do débito.\n\n[ACÓRDÃO 1132/2026 – ATA 15/2026 – PLENÁRIO | 9.3.]\n\nA multa foi fixada no valor de R$ 20.000,00, com base no art. 57 da Lei 8.443/1992, c/c o art. 267 do Regimento Interno do TCU, e Genésio Almeida Vinente foi condenado a pagar a dívida aos cofres do Tesouro Nacional, com prazo de quinze dias para que comprovasse o recolhimento da dívida."
+    },
+    {
+      "id": "Q5",
+      "categoria": "Análise Discriminada",
+      "query": "No monitoramento do Acórdão 634/2025-Plenário referente ao INSS, quais determinações foram consideradas apenas 'em cumprimento' (e não totalmente cumpridas), e qual unidade técnica foi autorizada a continuar o monitoramento?",
+      "top1_esperado": "ACORDAO-COMPLETO-2763267",
+      "keys_recuperados": [
+        "ACORDAO-COMPLETO-2763267",
+        "ACORDAO-COMPLETO-2765836",
+        "ACORDAO-COMPLETO-2758568",
+        "ACORDAO-COMPLETO-2752522",
+        "ACORDAO-COMPLETO-2756361"
+      ],
+      "hit_at_1": true,
+      "hit_at_k": true,
+      "rank": 1,
+      "rr": 1.0,
+      "tempo_total_ms": 1810.57,
+      "resposta_llm": "Considerando o Acórdão 985/2026-TCU-Plenário, as determinações 9.2.1, 9.2.3, 9.2.4, 9.2.5, 9.2.7, 9.2.8, 9.2.9 e 9.2.11 do Acórdão 634/2025-TCU-Plenário foram consideradas apenas \"em cumprimento\" (e não totalmente cumpridas).\n\nAlém disso, a AudBenefícios foi autorizada a continuar o monitoramento das determinações 9.2.1, 9.2.3, 9.2.4, 9.2.5, 9.2.7, 9.2.8, 9.2.9 e 9.2.11 do Acórdão 634/2025-TCU-Plenário, em até 90 (noventa) dias após a presente deliberação.\n\n[Acórdão 985/2026-TCU-Plenário – Plenário | KEY: ACORDAO-COMPLETO-2763267]"
+    }
+  ]
+}
