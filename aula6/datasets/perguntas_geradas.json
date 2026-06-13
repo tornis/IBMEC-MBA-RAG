@@ -1,8 +1,8 @@
 [
   {
     "id": "GENPC001",
-    "pergunta": "Qual é o número do Acórdão que fundamenta a decisão do TCU?",
-    "ground_truth": "1163/2026",
+    "pergunta": "Qual é o número do processo de monitoramento mencionado no acórdão?",
+    "ground_truth": "TC-014.210/2025-8",
     "tecnica_ideal": "Parent-Child",
     "documentos_relevantes": [
       "acordao_2026_1163_2765503"
@@ -12,8 +12,8 @@
   },
   {
     "id": "GENPC002",
-    "pergunta": "Qual é o número do artigo da Constituição Federal de 1998 mencionado no acórdão?",
-    "ground_truth": "71",
+    "pergunta": "Qual é o número do processo de pensão militar mencionado no acórdão?",
+    "ground_truth": "TC-009.326/2026-0",
     "tecnica_ideal": "Parent-Child",
     "documentos_relevantes": [
       "acordao_2026_2293_2766404"
@@ -22,20 +22,9 @@
     "justificativa": "Pergunta especifica sobre um detalhe de um documento longo: a busca precisa do trecho exato (filho) e a resposta precisa do contexto ao redor (pai)."
   },
   {
-    "id": "GENPC003",
-    "pergunta": "Qual é o valor do saldo do débito mencionado no acórdão do TCU?",
-    "ground_truth": "R$ 70,70",
-    "tecnica_ideal": "Parent-Child",
-    "documentos_relevantes": [
-      "acordao_2026_1113_2764890"
-    ],
-    "tipo": "ACÓRDÃO DE RELAÇÃO",
-    "justificativa": "Pergunta especifica sobre um detalhe de um documento longo: a busca precisa do trecho exato (filho) e a resposta precisa do contexto ao redor (pai)."
-  },
-  {
     "id": "GENPC004",
-    "pergunta": "Qual foi o valor da multa reduzida no Acórdão 2140/2026 do TCU?",
-    "ground_truth": "R$ 3.500,00",
+    "pergunta": "Para qual valor o Tribunal reduziu o débito histórico constante do item 9.2 do Acórdão 2.160/2021‑TCU‑2ª Câmara?",
+    "ground_truth": "R$ 52.473,28",
     "tecnica_ideal": "Parent-Child",
     "documentos_relevantes": [
       "acordao_2026_2140_2602274"
@@ -44,20 +33,9 @@
     "justificativa": "Pergunta especifica sobre um detalhe de um documento longo: a busca precisa do trecho exato (filho) e a resposta precisa do contexto ao redor (pai)."
   },
   {
-    "id": "GENPC005",
-    "pergunta": "Qual é o número do processo TC relacionado à pensão civil de Floraci Teixeira Noleto?",
-    "ground_truth": "TC- 008.098/2026-3",
-    "tecnica_ideal": "Parent-Child",
-    "documentos_relevantes": [
-      "acordao_2026_2184_2765840"
-    ],
-    "tipo": "ACÓRDÃO DE RELAÇÃO",
-    "justificativa": "Pergunta especifica sobre um detalhe de um documento longo: a busca precisa do trecho exato (filho) e a resposta precisa do contexto ao redor (pai)."
-  },
-  {
     "id": "GENPC006",
-    "pergunta": "Qual é o número do Acórdão do TCU mencionado no texto?",
-    "ground_truth": "2292/2026",
+    "pergunta": "Qual o número do processo de pensão civil mencionado no acórdão?",
+    "ground_truth": "TC-006.196/2026-8",
     "tecnica_ideal": "Parent-Child",
     "documentos_relevantes": [
       "acordao_2026_2292_2763712"
@@ -67,8 +45,8 @@
   },
   {
     "id": "GENHY001",
-    "pergunta": "O que aconteceu com a denúncia sobre irregularidades na Universidade Federal de Mato Grosso?",
-    "ground_truth": "A denúncia foi considerada improcedente e o processo foi arquivado, com a retirada da chancela de sigilo, exceto quanto às peças que identificam o denunciante.",
+    "pergunta": "O que o TCU decidiu sobre a denúncia de irregularidades na execução orçamentária e no remanejamento de recursos da UFMT?",
+    "ground_truth": "O Tribunal de Contas da União, em sessão plenária, reconheceu a denúncia, mas no mérito considerou‑a improcedente; retirou a chancela de sigilo, exceto quanto às peças que identificam o denunciante, determinou o arquivamento do processo e a ciência da deliberação ao denunciante e à Fundação Universidade Federal de Mato Grosso.",
     "tecnica_ideal": "HyDE",
     "documentos_relevantes": [
       "acordao_2026_1182_2764737"
@@ -77,20 +55,9 @@
     "justificativa": "Pergunta coloquial: ha gap de vocabulario com o documento tecnico; o documento hipotetico aproxima a busca do corpus."
   },
   {
-    "id": "GENHY002",
-    "pergunta": "O que aconteceu com a empresa Vale S.A. em relação ao recolhimento da Compensação Financeira pela Exploração de Recursos Minerais?",
-    "ground_truth": "A representação foi considerada parcialmente procedente, e a Agência Nacional de Mineração (ANM) foi determinada a adotar providências necessárias à conclusão do procedimento fiscalizatório para apurar eventual recolhimento a menor de Cfem em relação aos fatos examinados.",
-    "tecnica_ideal": "HyDE",
-    "documentos_relevantes": [
-      "acordao_2026_1213_2762703"
-    ],
-    "tipo": "ACÓRDÃO",
-    "justificativa": "Pergunta coloquial: ha gap de vocabulario com o documento tecnico; o documento hipotetico aproxima a busca do corpus."
-  },
-  {
     "id": "GENHY003",
-    "pergunta": "O que o Tribunal de Contas da União decidiu em relação às aposentadorias do Departamento Nacional de Infraestrutura de Transportes?",
-    "ground_truth": "O TCU decidiu ordenar o registro dos atos de concessão de aposentadoria, de acordo com os pareceres convergentes emitidos nos autos, com fundamento nos arts. 1º, inciso V, e 39, inciso II, da Lei 8.443, de 16 de julho de 1992, c/c os arts. 143, inciso II, 259, inciso II, e 260, §§ 1º e 2º, do Regimento Interno c/c o art. 7º, inciso I, da Resolução-TCU-353/2023 com a redação dada pelo art. 1º da Resolução-TCU-377 de 16 de julho de 2025.",
+    "pergunta": "Quem são as pessoas que solicitaram a aposentadoria nesse caso?",
+    "ground_truth": "Os interessados são Edmundo Pereira Furtado (CPF XXX.258.426-XX) e José Fausto Ferreira (CPF XXX.378.036-XX).",
     "tecnica_ideal": "HyDE",
     "documentos_relevantes": [
       "acordao_2026_2070_2762076"
@@ -99,114 +66,14 @@
     "justificativa": "Pergunta coloquial: ha gap de vocabulario com o documento tecnico; o documento hipotetico aproxima a busca do corpus."
   },
   {
-    "id": "GENHY004",
-    "pergunta": "O que aconteceu com o pedido de reexame do Comando da Aeronáutica sobre a reforma de um militar?",
-    "ground_truth": "O Tribunal de Contas da União (TCU) conheceu do pedido de reexame, deu-lhe provimento parcial, negou registro ao ato de reforma do militar José Roberto Gomes Pinto devido à divergência entre o posto utilizado como base de cálculo e a remuneração efetivamente devida, e determinou a emissão de um novo ato livre das irregularidades verificadas.",
-    "tecnica_ideal": "HyDE",
-    "documentos_relevantes": [
-      "acordao_2026_2279_2766383"
-    ],
-    "tipo": "ACÓRDÃO",
-    "justificativa": "Pergunta coloquial: ha gap de vocabulario com o documento tecnico; o documento hipotetico aproxima a busca do corpus."
-  },
-  {
     "id": "GENHY005",
-    "pergunta": "Quem foi a pessoa que teve o ato de concessão de aposentadoria registrado pelo TCU?",
-    "ground_truth": "Maria Stela Melo Santos Taqueda",
+    "pergunta": "O TCU já deu o ok pra aposentadoria da Maria Stela que trabalha na UFSE?",
+    "ground_truth": "Sim. O Acórdão nº 2283/2026, da 2ª Câmara do Tribunal de Contas da União, decidiu por unanimidade que deve ser registrado o ato de concessão de aposentadoria de Maria Stela Melo Santos Taqueda, vinculada à Fundação Universidade Federal de Sergipe, em conformidade com os pareceres emitidos nos autos.",
     "tecnica_ideal": "HyDE",
     "documentos_relevantes": [
       "acordao_2026_2283_2766911"
     ],
     "tipo": "ACÓRDÃO DE RELAÇÃO",
     "justificativa": "Pergunta coloquial: ha gap de vocabulario com o documento tecnico; o documento hipotetico aproxima a busca do corpus."
-  },
-  {
-    "id": "GENHY006",
-    "pergunta": "O que o Tribunal de Contas da União decidiu sobre os embargos do Banco Central do Brasil em relação à auditoria sobre golpes digitais contra idosos?",
-    "ground_truth": "O TCU rejeitou os embargos de declaração do Banco Central do Brasil, por unanimidade, com fundamento nos arts. 32, II, e 34 da Lei 8.443/1992, e determinou a comunicação da deliberação ao embargante e o envio do processo à Seses para sorteio do relator do pedido de reexame.",
-    "tecnica_ideal": "HyDE",
-    "documentos_relevantes": [
-      "acordao_2026_1200_2760678"
-    ],
-    "tipo": "ACÓRDÃO",
-    "justificativa": "Pergunta coloquial: ha gap de vocabulario com o documento tecnico; o documento hipotetico aproxima a busca do corpus."
-  },
-  {
-    "id": "GENRA001",
-    "pergunta": "Quais são as principais determinações e recomendações feitas pelo Tribunal de Contas da União (TCU) em relação às universidades federais e outros órgãos públicos, especialmente em relação à execução orçamentária, remanejamento de recursos e remuneração de servidores?",
-    "ground_truth": "O TCU tem feito determinações e recomendações para que as universidades federais e outros órgãos públicos atendam às normas legais e regulamentares em relação à execução orçamentária, remanejamento de recursos e remuneração de servidores, incluindo a necessidade de cumprir com as leis e regulamentos aplicáveis, realizar a gestão orçamentária de forma transparente e eficiente, e garantir a remuneração correta dos servidores, além de realizar monitoramento e acompanhamento das ações tomadas para garantir o cumprimento das determinações e recomendações.",
-    "tecnica_ideal": "RAPTOR",
-    "documentos_relevantes": [
-      "acordao_2026_1163_2765503",
-      "acordao_2026_1182_2764737",
-      "acordao_2026_2279_2766383"
-    ],
-    "tipo": "tematica",
-    "justificativa": "Pergunta ampla/tematica que exige sintetizar varios documentos do mesmo tema (os resumos de cluster ajudam)."
-  },
-  {
-    "id": "GENRA002",
-    "pergunta": "Qual é o panorama geral dos acórdãos do Tribunal de Contas da União (TCU) sobre aposentadoria, considerando as decisões recentes?",
-    "ground_truth": "Os acórdãos do TCU sobre aposentadoria indicam que o tribunal tem sido uniforme em sua abordagem, ordenando o registro de atos de concessão de aposentadoria com base em fundamentos legais específicos, como a Lei 8.443/1992 e o Regimento Interno do TCU, e considerando pareceres emitidos nos autos. As decisões são tomadas por unanimidade e seguem um padrão de análise e julgamento, demonstrando um compromisso com a legalidade e a regularidade dos processos de aposentadoria.",
-    "tecnica_ideal": "RAPTOR",
-    "documentos_relevantes": [
-      "acordao_2026_2070_2762076",
-      "acordao_2026_2283_2766911",
-      "acordao_2026_2075_2763521"
-    ],
-    "tipo": "tematica",
-    "justificativa": "Pergunta ampla/tematica que exige sintetizar varios documentos do mesmo tema (os resumos de cluster ajudam)."
-  },
-  {
-    "id": "GENRA003",
-    "pergunta": "Quais são as principais irregularidades e consequências identificadas pelo Tribunal de Contas da União (TCU) em processos de tomada de contas especiais relacionados à gestão de recursos públicos e benefícios previdenciários?",
-    "ground_truth": "As principais irregularidades identificadas incluem não comprovação da regular aplicação de recursos repassados, desfalque, alcance, desvio ou desaparecimento de dinheiro, bens ou valores públicos, concessão irregular de benefícios assistenciais e previdenciários mediante fraude. As consequências incluem débito, multa, inabilitação para exercício de cargo em comissão ou função de confiança no âmbito da administração pública federal, além de revelia e irregularidade. O TCU tem atuado para garantir a regularidade na gestão de recursos públicos e na concessão de benefícios, aplicando sanções aos responsáveis por irregularidades e buscando a recuperação de valores desviados.",
-    "tecnica_ideal": "RAPTOR",
-    "documentos_relevantes": [
-      "acordao_2026_2259_2765888",
-      "acordao_2026_2082_2764761",
-      "acordao_2026_1060_2759672"
-    ],
-    "tipo": "tematica",
-    "justificativa": "Pergunta ampla/tematica que exige sintetizar varios documentos do mesmo tema (os resumos de cluster ajudam)."
-  },
-  {
-    "id": "GENRA004",
-    "pergunta": "Quais são as principais decisões e orientações do Tribunal de Contas da União (TCU) em relação ao recolhimento de dívidas, multas e compensações financeiras, especialmente em casos de irregularidades na execução de convênios e exploração de recursos minerais?",
-    "ground_truth": "O TCU tem se manifestado sobre a necessidade de quitação de dívidas e multas, especialmente em casos de irregularidades na execução de convênios e exploração de recursos minerais. As decisões incluem a aplicação de multas, a necessidade de recolhimento de débitos e a importância de cumprir com as obrigações financeiras. Além disso, o TCU também tem se manifestado sobre a necessidade de transparência e regularidade nos processos de recolhimento de compensações financeiras, como a Compensação Financeira pela Exploração de Recursos Minerais (CFEM). Em alguns casos, o TCU também tem reduzido ou anulado débitos e multas em decorrência de falhas metodológicas ou de cálculo. Em resumo, o TCU busca garantir a regularidade e a transparência nos processos de recolhimento de dívidas e compensações financeiras, e aplica sanções em casos de irregularidades.",
-    "tecnica_ideal": "RAPTOR",
-    "documentos_relevantes": [
-      "acordao_2026_1113_2764890",
-      "acordao_2026_2140_2602274",
-      "acordao_2026_1213_2762703"
-    ],
-    "tipo": "tematica",
-    "justificativa": "Pergunta ampla/tematica que exige sintetizar varios documentos do mesmo tema (os resumos de cluster ajudam)."
-  },
-  {
-    "id": "GENRA005",
-    "pergunta": "Quais são os principais aspectos que o Tribunal de Contas da União (TCU) considera ao analisar e julgar atos de aposentadoria, especialmente em relação às regras de transição, cálculo de proventos e incorporação de parcelas?",
-    "ground_truth": "O TCU considera aspectos como a aplicação das regras de transição previstas em emendas constitucionais, o cálculo correto dos proventos com base na média das remunerações de contribuição, a incidência da vedação de acumulação de benefícios, a incorporação de parcelas como 'opção' e 'quintos', a necessidade de amparo em decisão judicial transitada em julgado e a conversão em parcela compensatória e absorção, além de verificar se o servidor está sujeito ao regime de previdência complementar e se os proventos foram calculados de acordo com a integralidade e paridade previstas na Constituição.",
-    "tecnica_ideal": "RAPTOR",
-    "documentos_relevantes": [
-      "acordao_2026_2211_2765418",
-      "acordao_2026_2189_2745590",
-      "acordao_2026_2195_2764195"
-    ],
-    "tipo": "tematica",
-    "justificativa": "Pergunta ampla/tematica que exige sintetizar varios documentos do mesmo tema (os resumos de cluster ajudam)."
-  },
-  {
-    "id": "GENRA006",
-    "pergunta": "Qual é o panorama geral dos acórdãos do Tribunal de Contas da União (TCU) sobre pensões militares e civis, incluindo os procedimentos de análise e julgamento, as fundamentações legais e as decisões tomadas?",
-    "ground_truth": "Os acórdãos do TCU sobre pensões militares e civis demonstram um padrão de procedimentos rigorosos de análise e julgamento, com base em fundamentações legais específicas, como a Constituição Federal, a Lei 8.443/1992 e o Regimento Interno do TCU. As decisões são tomadas por unanimidade, ordenando o registro dos atos de concessão de pensão, sem prejuízo de determinações adicionais. Os acórdãos abordam tanto pensões militares quanto civis, envolvendo diferentes unidades emissoras e unidades de controle interno, e são fundamentados em pareceres emitidos e na legislação aplicável. Em resumo, o TCU exerce um controle rigoroso sobre a concessão de pensões, garantindo a legalidade e a regularidade dos processos.",
-    "tecnica_ideal": "RAPTOR",
-    "documentos_relevantes": [
-      "acordao_2026_2293_2766404",
-      "acordao_2026_2184_2765840",
-      "acordao_2026_2292_2763712"
-    ],
-    "tipo": "tematica",
-    "justificativa": "Pergunta ampla/tematica que exige sintetizar varios documentos do mesmo tema (os resumos de cluster ajudam)."
   }
 ]

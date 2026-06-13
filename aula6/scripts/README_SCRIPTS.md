@@ -58,9 +58,17 @@ python 01_gerar_dataset.py --n-docs 80 --por-tecnica 6
 Gera `corpus_trabalho.json` (amostra) e `perguntas_geradas.json` (18 perguntas: 6 por técnica).
 
 ### `02_parent_child.py` — Hierarchical / Parent-Child (#T07)
+Arquitetura **toda no OpenSearch** (sem InMemory): um índice de **busca** (`<indice>`)
+guarda só as **folhas com embedding** (kNN), e um índice de **árvore**
+(`<indice>_arvore`) guarda **todos os nós (pais + folhas)** com os metadados de
+hierarquia. O `AutoMergingRetriever` lê o `__parent_id` da folha recuperada e busca o
+**pai por id** nesse índice da árvore. É **idempotente**: o split + embeddings rodam só
+no `--recriar` (ou se algum índice estiver vazio); execuções normais só reabrem os
+índices. Use `--inspecionar` para ver como a lib estrutura pais e filhos no OpenSearch.
 ```bash
 python 02_parent_child.py --recriar
 python 02_parent_child.py --pergunta "..."
+python 02_parent_child.py --inspecionar    # mostra níveis, pais, filhos e parent_id
 ```
 
 ### `03_raptor.py` — RAPTOR (#T08)

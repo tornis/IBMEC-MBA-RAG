@@ -63,8 +63,14 @@ def construir_responder(indice, top_k=5, recriar=False):
     def responder(pergunta):
         # 1) gerar o documento hipotetico
         hipotetico = _comum.gerar_texto(cliente, modelo, HYDE_PROMPT.format(pergunta=pergunta), max_tokens=250)
+        # Se o LLM devolver vazio (modelo de reasoning, filtro, etc.), o embedder
+        # receberia "" e o Ollama retornaria lista vazia -> "list index out of
+        # range". Nesses casos, caimos para a pergunta crua na busca.
+        texto_busca = hipotetico.strip() or pergunta
+        if not hipotetico.strip():
+            print("   [aviso] documento hipotetico veio vazio; buscando pela pergunta crua.")
         # 2) buscar pelo embedding do hipotetico (nao da pergunta crua)
-        docs = busca.run({"embedder": {"text": hipotetico}})["retriever"]["documents"]
+        docs = busca.run({"embedder": {"text": texto_busca}})["retriever"]["documents"]
         contextos = [d.content for d in docs]
         # 3) responder com base nos trechos recuperados
         resposta = _comum.responder_com_contexto(cliente, modelo, pergunta, contextos)

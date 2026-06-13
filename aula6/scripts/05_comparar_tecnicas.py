@@ -15,7 +15,11 @@ Robustez:
   - juiz configuravel (--judge ou GROQ_JUDGE_MODEL no .env) e contextos truncados,
     para perguntas de contexto longo (RAPTOR) nao serem descartadas pelo juiz.
 
-Precisa de OpenSearch, Ollama e Groq. Reaproveita os builders de 02/03/04.
+Precisa de OpenSearch, Ollama e Groq. Reaproveita os builders de 02/03/04
+(construir_responder), recriando os indices a cada execucao. Obs.: o 02_parent_child
+cria DOIS indices no OpenSearch - 'aula6_parent_child' (folhas, com embedding) e
+'aula6_parent_child_arvore' (pais + folhas, p/ o auto-merging); este script aciona os
+dois automaticamente via construir_responder(..., recriar=True).
 
 Uso:
     python 05_comparar_tecnicas.py

@@ -95,6 +95,7 @@ def construir_responder(indice, top_k=5, recriar=False):
             texto = ""
             print(f"  (aviso: resumo do cluster {cluster} falhou: {e})")
         if texto:
+            print(texto)
             ids_origem = [m.meta.get("id_original") for m in membros]
             resumos.append(Document(content=texto,
                                     meta={"tipo": "resumo_raptor", "cluster": int(cluster),

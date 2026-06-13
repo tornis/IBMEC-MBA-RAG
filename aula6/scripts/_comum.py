@@ -158,7 +158,10 @@ def gerar_texto(cliente, modelo, prompt, max_tokens=500, temperature=0.2):
         model=modelo, messages=[{"role": "user", "content": prompt}],
         temperature=temperature, max_tokens=max_tokens,
     )
-    return resp.choices[0].message.content.strip()
+    # Alguns modelos (ex.: de reasoning) ou completacoes filtradas devolvem
+    # content = None/"" - protegemos para nao quebrar quem usa o texto depois.
+    conteudo = resp.choices[0].message.content
+    return (conteudo or "").strip()
 
 
 PROMPT_RESPOSTA = (
