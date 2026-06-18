@@ -90,7 +90,7 @@ def _llm(temp=0.2, max_tokens=500):
 
 
 def montar_pipeline(store, top_k, usar_langfuse, limite_rel=0.5):
-    pipe = Pipeline()
+    pipe = Pipeline(max_runs_per_component=10)
     if usar_langfuse:
         from haystack_integrations.components.connectors.langfuse import LangfuseConnector
 

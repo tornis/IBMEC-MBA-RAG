@@ -23,13 +23,24 @@
   },
   {
     "id": "GENPC004",
-    "pergunta": "Para qual valor o Tribunal reduziu o débito histórico constante do item 9.2 do Acórdão 2.160/2021‑TCU‑2ª Câmara?",
+    "pergunta": "Qual foi o valor histórico do débito que o Acórdão 2140/2026 reduziu, conforme o item 9.1.1?",
     "ground_truth": "R$ 52.473,28",
     "tecnica_ideal": "Parent-Child",
     "documentos_relevantes": [
       "acordao_2026_2140_2602274"
     ],
     "tipo": "ACÓRDÃO",
+    "justificativa": "Pergunta especifica sobre um detalhe de um documento longo: a busca precisa do trecho exato (filho) e a resposta precisa do contexto ao redor (pai)."
+  },
+  {
+    "id": "GENPC005",
+    "pergunta": "Qual é o número do processo de pensão civil mencionado no acórdão?",
+    "ground_truth": "TC-008.098/2026-3",
+    "tecnica_ideal": "Parent-Child",
+    "documentos_relevantes": [
+      "acordao_2026_2184_2765840"
+    ],
+    "tipo": "ACÓRDÃO DE RELAÇÃO",
     "justificativa": "Pergunta especifica sobre um detalhe de um documento longo: a busca precisa do trecho exato (filho) e a resposta precisa do contexto ao redor (pai)."
   },
   {
@@ -45,8 +56,8 @@
   },
   {
     "id": "GENHY001",
-    "pergunta": "O que o TCU decidiu sobre a denúncia de irregularidades na execução orçamentária e no remanejamento de recursos da UFMT?",
-    "ground_truth": "O Tribunal de Contas da União, em sessão plenária, reconheceu a denúncia, mas no mérito considerou‑a improcedente; retirou a chancela de sigilo, exceto quanto às peças que identificam o denunciante, determinou o arquivamento do processo e a ciência da deliberação ao denunciante e à Fundação Universidade Federal de Mato Grosso.",
+    "pergunta": "O que o TCU decidiu sobre a denúncia que falava de supostas irregularidades na UFMT?",
+    "ground_truth": "O Tribunal de Contas da União, por unanimidade, reconheceu a denúncia, considerou‑a improcedente, retirou a chancela de sigilo (mantendo sigilosa apenas a identidade do denunciante) e determinou o seu arquivamento, devendo ser comunicada a decisão ao denunciante e à Fundação Universidade Federal de Mato Grosso.",
     "tecnica_ideal": "HyDE",
     "documentos_relevantes": [
       "acordao_2026_1182_2764737"
@@ -55,20 +66,20 @@
     "justificativa": "Pergunta coloquial: ha gap de vocabulario com o documento tecnico; o documento hipotetico aproxima a busca do corpus."
   },
   {
-    "id": "GENHY003",
-    "pergunta": "Quem são as pessoas que solicitaram a aposentadoria nesse caso?",
-    "ground_truth": "Os interessados são Edmundo Pereira Furtado (CPF XXX.258.426-XX) e José Fausto Ferreira (CPF XXX.378.036-XX).",
+    "id": "GENHY004",
+    "pergunta": "Por que o TCU não registrou a reforma do militar José Roberto Gomes Pinto?",
+    "ground_truth": "O Tribunal de Contas da União negou o registro do ato de reforma em razão da divergência entre o posto utilizado como base de cálculo constante do ato e a remuneração efetivamente devida ao interessado.",
     "tecnica_ideal": "HyDE",
     "documentos_relevantes": [
-      "acordao_2026_2070_2762076"
+      "acordao_2026_2279_2766383"
     ],
-    "tipo": "ACÓRDÃO DE RELAÇÃO",
+    "tipo": "ACÓRDÃO",
     "justificativa": "Pergunta coloquial: ha gap de vocabulario com o documento tecnico; o documento hipotetico aproxima a busca do corpus."
   },
   {
     "id": "GENHY005",
-    "pergunta": "O TCU já deu o ok pra aposentadoria da Maria Stela que trabalha na UFSE?",
-    "ground_truth": "Sim. O Acórdão nº 2283/2026, da 2ª Câmara do Tribunal de Contas da União, decidiu por unanimidade que deve ser registrado o ato de concessão de aposentadoria de Maria Stela Melo Santos Taqueda, vinculada à Fundação Universidade Federal de Sergipe, em conformidade com os pareceres emitidos nos autos.",
+    "pergunta": "Qual foi o nome da pessoa que teve a aposentadoria aprovada nesse acórdão do TCU?",
+    "ground_truth": "Maria Stela Melo Santos Taqueda, inscrita no CPF sob o número XXX.908.535-XX, cuja aposentadoria foi registrada conforme o Acórdão nº 2283/2026 da Segunda Câmara do Tribunal de Contas da União.",
     "tecnica_ideal": "HyDE",
     "documentos_relevantes": [
       "acordao_2026_2283_2766911"

@@ -10,7 +10,7 @@ ollama-haystack>=4.0
 openai>=1.40                 # cliente para a Groq
 
 # --- Web search de fallback (CRAG / Self-RAG) ---
-tavily-haystack>=0.2         # componente oficial TavilyWebSearch (puxa tavily-python)
+tavily-haystack             # componente oficial TavilyWebSearch (puxa tavily-python)
                              # opcional: so usado se TAVILY_API_KEY estiver no .env
 
 # --- Avaliacao RAGAS (script 05) ---
