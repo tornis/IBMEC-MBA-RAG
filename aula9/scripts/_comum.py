@@ -79,10 +79,16 @@ def ler_corpus():
 # ---------------------------------------------------------------------------
 # LightRAG: LLM (Groq) e embeddings (Ollama)
 # ---------------------------------------------------------------------------
-async def _llm_model_func(prompt, system_prompt=None, history_messages=None,
-                          keyword_extraction=False, **kwargs):
-    """Funcao de LLM que o LightRAG chama (Groq via API OpenAI-compatible)."""
+async def _llm_model_func(prompt, system_prompt=None, history_messages=None, **kwargs) -> str:
+    """ModelFunc para o LightRAG chamando a API do Groq (usando a lib oficial do Groq via API OpenAI-compatible)."""
     from lightrag.llm.openai import openai_complete_if_cache
+
+    # --- INJETADO: Força o comportamento em português direto no System Prompt ---
+    instrucao_pt = "\n\nCRITICAL: Return all entity descriptions, relationship summaries, and metadata strictly in Portuguese (Brazil). Even if the prompt parameters are in English, your textual output inside JSON or text blocks must be in Portuguese."
+    if system_prompt:
+        system_prompt = system_prompt + instrucao_pt
+    else:
+        system_prompt = "You are a helpful assistant. " + instrucao_pt
 
     api_key, modelo, base_url = config_groq()
     return await openai_complete_if_cache(
