@@ -125,3 +125,23 @@ async def criar_rag(working_dir=None):
 def grafo_existe(working_dir=None):
     wd = Path(working_dir or WORKING_DIR)
     return (wd / "graph_chunk_entity_relation.graphml").exists()
+
+
+def ler_graphml(caminho=None):
+    """Le o GraphML do LightRAG de forma ROBUSTA (NetworkX).
+
+    O arquivo as vezes vem com null bytes/lixo apos </graphml> (artefato de
+    escrita/sandbox), o que quebra o parser XML. Aqui limpamos os null bytes e
+    truncamos no fim do XML antes de parsear.
+    """
+    import networkx as nx
+
+    caminho = Path(caminho or GRAPHML)
+    if not caminho.exists():
+        raise FileNotFoundError(
+            f"Grafo nao encontrado em {caminho}. Rode antes: python 01_indexar_grafo.py")
+    bruto = caminho.read_bytes().replace(b"\x00", b"")
+    fim = bruto.rfind(b"</graphml>")
+    if fim != -1:
+        bruto = bruto[:fim + len(b"</graphml>")]
+    return nx.parse_graphml(bruto.decode("utf-8", errors="ignore"))

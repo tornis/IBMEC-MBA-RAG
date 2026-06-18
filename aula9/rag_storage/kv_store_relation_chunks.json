@@ -4,8 +4,8 @@
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Delegacia_Crimes_Organizados<SEP>Organização_Criminosa"
   },
   "CNJ<SEP>Prova_Digital": {
@@ -13,8 +13,8 @@
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "CNJ<SEP>Prova_Digital"
   },
   "Criptomoedas<SEP>Marcos_Aurélio_Silva": {
@@ -22,8 +22,8 @@
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Criptomoedas<SEP>Marcos_Aurélio_Silva"
   },
   "Ministério_da_Justiça<SEP>SENASP": {
@@ -31,71 +31,53 @@
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Ministério_da_Justiça<SEP>SENASP"
   },
-  "CVM<SEP>USDT": {
+  "Cadeia_de_Custódia<SEP>Perícia_Forense": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "CVM<SEP>USDT"
-  },
-  "CPP<SEP>Prova_Digital": {
-    "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
-    ],
-    "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "CPP<SEP>Prova_Digital"
-  },
-  "CNJ<SEP>Resolução_345/2020": {
-    "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
-    ],
-    "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "CNJ<SEP>Resolução_345/2020"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Cadeia_de_Custódia<SEP>Perícia_Forense"
   },
   "Marcos_Aurélio_Silva<SEP>TRF-4": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Marcos_Aurélio_Silva<SEP>TRF-4"
   },
-  "Lavagem_Dinheiro<SEP>Lei_9613/98": {
+  "Criptomoedas<SEP>Produto_Crime": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Lavagem_Dinheiro<SEP>Lei_9613/98"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Criptomoedas<SEP>Produto_Crime"
   },
-  "Lei_11343/06<SEP>Tráfico_Drogas": {
+  "CNJ<SEP>Código_de_Processo_Penal": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Lei_11343/06<SEP>Tráfico_Drogas"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "CNJ<SEP>Código_de_Processo_Penal"
   },
   "Delegacia_Crimes_Organizados<SEP>Juízo_da_2ª_Vara_Criminal": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Delegacia_Crimes_Organizados<SEP>Juízo_da_2ª_Vara_Criminal"
   },
   "Autopsy<SEP>SENASP": {
@@ -103,71 +85,44 @@
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Autopsy<SEP>SENASP"
   },
-  "CNJ<SEP>Normas_ISO/IEC_27037": {
+  "Perito<SEP>Relatório_Pericial": {
     "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
+      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "CNJ<SEP>Normas_ISO/IEC_27037"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Perito<SEP>Relatório_Pericial"
   },
-  "Ministério_da_Justiça<SEP>Open_Source_Intelligence": {
+  "Marcos_Aurélio_Silva<SEP>Tráfico_Entorpecentes": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Ministério_da_Justiça<SEP>Open_Source_Intelligence"
-  },
-  "Lei_9613/98<SEP>TRF-4": {
-    "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-001"
-    ],
-    "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Lei_9613/98<SEP>TRF-4"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Marcos_Aurélio_Silva<SEP>Tráfico_Entorpecentes"
   },
   "Ferrajoli<SEP>Garantismo_Penal": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Ferrajoli<SEP>Garantismo_Penal"
-  },
-  "ANPP<SEP>Lei_13964/2019": {
-    "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
-    ],
-    "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "ANPP<SEP>Lei_13964/2019"
-  },
-  "Relatório_Pericial<SEP>SENASP": {
-    "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
-    ],
-    "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Relatório_Pericial<SEP>SENASP"
   },
   "Convicção_Além_Dúvida<SEP>Standard_Probatório": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Convicção_Além_Dúvida<SEP>Standard_Probatório"
   },
   "Prova_Indiciária<SEP>Raciocínio_Abdutivo": {
@@ -175,89 +130,116 @@
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Prova_Indiciária<SEP>Raciocínio_Abdutivo"
   },
-  "ANPP<SEP>Ministério_Público": {
+  "Ministério_Justiça<SEP>SENASP": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "ANPP<SEP>Ministério_Público"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Ministério_Justiça<SEP>SENASP"
+  },
+  "ANPP<SEP>Lei_13964/2019": {
+    "chunk_ids": [
+      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
+    ],
+    "count": 1,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "ANPP<SEP>Lei_13964/2019"
   },
   "Ferramentas_Forenses<SEP>Investigador": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Ferramentas_Forenses<SEP>Investigador"
-  },
-  "Perito<SEP>Relatório_Pericial": {
-    "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
-    ],
-    "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Perito<SEP>Relatório_Pericial"
   },
   "Informações_Abertas<SEP>OSINT": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Informações_Abertas<SEP>OSINT"
   },
-  "Peirce<SEP>Raciocínio_Abdutivo": {
+  "ANPP<SEP>Ministério_Público": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Peirce<SEP>Raciocínio_Abdutivo"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "ANPP<SEP>Ministério_Público"
   },
   "Manual<SEP>SENASP": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Manual<SEP>SENASP"
+  },
+  "Grupo_de_Pesquisa_em_Justiça_Negociada<SEP>USP": {
+    "chunk_ids": [
+      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
+    ],
+    "count": 1,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Grupo_de_Pesquisa_em_Justiça_Negociada<SEP>USP"
+  },
+  "Prof._Dr._Antonio_Magalhães_Gomes_Filho<SEP>Teoria_da_Prova": {
+    "chunk_ids": [
+      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
+    ],
+    "count": 1,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Prof._Dr._Antonio_Magalhães_Gomes_Filho<SEP>Teoria_da_Prova"
+  },
+  "Ação_Penal<SEP>Ministério_Público": {
+    "chunk_ids": [
+      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
+    ],
+    "count": 1,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Ação_Penal<SEP>Ministério_Público"
   },
   "ANPP<SEP>Colaboração_Premiada": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "ANPP<SEP>Colaboração_Premiada"
   },
-  "Prof.Dr._Antonio_Magalhães_Gomes_Filho<SEP>Teoria_Prova": {
+  "Charles_Sanders_Peirce<SEP>Raciocínio_Abdutivo": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Prof.Dr._Antonio_Magalhães_Gomes_Filho<SEP>Teoria_Prova"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Charles_Sanders_Peirce<SEP>Raciocínio_Abdutivo"
   },
   "Lei 12.850/2013<SEP>Organização Criminosa": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Lei 12.850/2013<SEP>Organização Criminosa"
   },
   "Colaboração Premiada<SEP>Ministério Público": {
@@ -265,8 +247,8 @@
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Colaboração Premiada<SEP>Ministério Público"
   },
   "HC 127.483<SEP>STF": {
@@ -274,107 +256,89 @@
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "HC 127.483<SEP>STF"
   },
-  "ANPP<SEP>Ação_Penal": {
-    "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
-    ],
-    "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "ANPP<SEP>Ação_Penal"
-  },
-  "Ação Controlada<SEP>Investigação": {
+  "Acordo de Colaboração<SEP>Ministério Público Federal": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Ação Controlada<SEP>Investigação"
-  },
-  "Colaboração Premiada<SEP>Homologação Judicial": {
-    "chunk_ids": [
-      "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
-    ],
-    "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Colaboração Premiada<SEP>Homologação Judicial"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Acordo de Colaboração<SEP>Ministério Público Federal"
   },
   "Departamento de Inteligência Policial<SEP>Operação Integração": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "Departamento de Inteligência Policial<SEP>Operação Integração"
   },
-  "ANPP<SEP>Grupo_de_Pesquisa_em_Justiça_Negociada_": {
+  "ANPP<SEP>Ação_Penal": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-002"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "ANPP<SEP>Grupo_de_Pesquisa_em_Justiça_Negociada_"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "ANPP<SEP>Ação_Penal"
   },
-  "Acordo de Colaboração Premiada<SEP>Ministério Público Federal": {
+  "Criptomoedas<SEP>Organização Criminosa": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Acordo de Colaboração Premiada<SEP>Ministério Público Federal"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Criptomoedas<SEP>Organização Criminosa"
   },
-  "Interceptação Telefônica<SEP>Investigação": {
+  "Ministério Público Federal<SEP>Vara Federal Curitiba": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Interceptação Telefônica<SEP>Investigação"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Ministério Público Federal<SEP>Vara Federal Curitiba"
   },
-  "Departamento de Inteligência Policial<SEP>Polícia Federal": {
+  "Acordo de Colaboração<SEP>Homologação Judicial": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Departamento de Inteligência Policial<SEP>Polícia Federal"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Acordo de Colaboração<SEP>Homologação Judicial"
   },
-  "Acordo de Colaboração Premiada<SEP>Juízo da 13ª Vara Federal Criminal de Curitiba/PR": {
+  "Delegacia de Crimes Organizados<SEP>Operação Integração": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Acordo de Colaboração Premiada<SEP>Juízo da 13ª Vara Federal Criminal de Curitiba/PR"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Delegacia de Crimes Organizados<SEP>Operação Integração"
   },
-  "Investigação<SEP>Polícia Federal": {
+  "Departamento de Inteligência Policial<SEP>Infiltração": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Investigação<SEP>Polícia Federal"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Departamento de Inteligência Policial<SEP>Infiltração"
   },
-  "Delegacia de Crimes Organizados<SEP>Departamento de Inteligência Policial": {
+  "Empresas de Fachada<SEP>Organização Criminosa": {
     "chunk_ids": [
       "doc-3fb006401d6140fd918a731354a97feb-chunk-000"
     ],
     "count": 1,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
-    "_id": "Delegacia de Crimes Organizados<SEP>Departamento de Inteligência Policial"
+    "create_time": 1781805410,
+    "update_time": 1781805410,
+    "_id": "Empresas de Fachada<SEP>Organização Criminosa"
   }
 }

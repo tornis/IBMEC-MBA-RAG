@@ -95,6 +95,18 @@ python 04_explorar_grafo.py --entidade "Colaboracao Premiada"
 python 04_explorar_grafo.py --entidade "MPF" --exportar subgrafo.json
 ```
 
+### `05_visualizar_grafo.py` — visualização interativa (HTML) para apresentar
+Gera um **HTML autossuficiente** (vis-network) a partir do GraphML: nós coloridos por
+tipo de entidade, tamanho por grau (hubs maiores), descrição da relação no hover, com
+zoom/arraste/física. Abra no navegador para apresentar em sala (não precisa de servidor).
+```bash
+python 05_visualizar_grafo.py                          # gera aula9/grafo_juridico.html
+python 05_visualizar_grafo.py --entidade "Criptomoedas"   # foca uma entidade + vizinhos
+python 05_visualizar_grafo.py --saida grafo.html
+```
+> Precisa de internet ao abrir (carrega o vis-network via CDN). Alternativa totalmente
+> interativa: a aba **Knowledge Graph** do LightRAG Server (veja `../server/`).
+
 ---
 
 ## 4. Resumo de dependências por script
@@ -151,3 +163,31 @@ Config: **LLM = Groq** (`llama-3.3-70b-versatile`), **Embedding = Ollama bge-m3*
 - **Escalar depois:** quando o acervo crescer, dá para mover o storage para Neo4j (grafo)
   ou OpenSearch 3.3+ (vetores) só ajustando variáveis de ambiente do LightRAG — sem
   mudar a lógica dos scripts. Nesta aula ficamos no nativo em arquivo por simplicidade.
+
+---
+
+## 7. Problema conhecido: Ollama + bge-m3 retorna NaN (erro 500)
+
+Ao indexar (`01_indexar_grafo.py`) você pode ver:
+
+```
+ERROR: Error in ollama_embed: failed to encode response: json: unsupported value: NaN (status code: 500)
+```
+
+É um **bug conhecido do Ollama com o `bge-m3`** (não é dos scripts): o modelo gera
+valores **NaN** em alguns embeddings e o Ollama não consegue serializar o JSON. A causa
+está ligada ao **flash attention**.
+
+**Correção (mantém o bge-m3):**
+
+1. Feche o Ollama (bandeja → Quit).
+2. PowerShell: `setx OLLAMA_FLASH_ATTENTION 0`
+3. Reabra o Ollama (para subir com a variável).
+4. Reindexe: `python 01_indexar_grafo.py --recriar`
+
+(Se você roda o servidor à mão: `$env:OLLAMA_FLASH_ATTENTION="0"; ollama serve`.)
+
+**Se persistir:** atualize o Ollama (versões recentes tratam NaN) e
+`ollama pull bge-m3` de novo; ou, como último recurso, troque o embedding para
+`nomic-embed-text` (`AULA9_EMBED_MODEL=nomic-embed-text` no `.env` + `--recriar`) — mas
+aí use o mesmo modelo no LightRAG Server (nomic/768) para manter o alinhamento.

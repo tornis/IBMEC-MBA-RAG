@@ -2,132 +2,120 @@
   "doc-3fb006401d6140fd918a731354a97feb": {
     "relation_pairs": [
       [
-        "CVM",
-        "USDT"
-      ],
-      [
-        "Departamento de Inteligência Policial",
-        "Polícia Federal"
-      ],
-      [
-        "Criptomoedas",
-        "Marcos_Aurélio_Silva"
-      ],
-      [
-        "ANPP",
-        "Ministério_Público"
-      ],
-      [
-        "Informações_Abertas",
-        "OSINT"
-      ],
-      [
-        "Lei 12.850/2013",
-        "Organização Criminosa"
-      ],
-      [
         "CNJ",
-        "Normas_ISO/IEC_27037"
+        "Código_de_Processo_Penal"
       ],
       [
-        "HC 127.483",
-        "STF"
+        "Cadeia_de_Custódia",
+        "Perícia_Forense"
       ],
       [
-        "Perito",
-        "Relatório_Pericial"
-      ],
-      [
-        "Ferrajoli",
-        "Garantismo_Penal"
-      ],
-      [
-        "Acordo de Colaboração Premiada",
-        "Juízo da 13ª Vara Federal Criminal de Curitiba/PR"
-      ],
-      [
-        "Colaboração Premiada",
-        "Ministério Público"
-      ],
-      [
-        "Lei_11343/06",
-        "Tráfico_Drogas"
+        "Empresas de Fachada",
+        "Organização Criminosa"
       ],
       [
         "Prova_Indiciária",
         "Raciocínio_Abdutivo"
       ],
       [
-        "Investigação",
-        "Polícia Federal"
+        "Ação_Penal",
+        "Ministério_Público"
       ],
       [
-        "CNJ",
-        "Resolução_345/2020"
+        "Departamento de Inteligência Policial",
+        "Operação Integração"
       ],
       [
-        "ANPP",
-        "Lei_13964/2019"
-      ],
-      [
-        "Relatório_Pericial",
-        "SENASP"
-      ],
-      [
-        "Ação Controlada",
-        "Investigação"
-      ],
-      [
-        "ANPP",
-        "Ação_Penal"
-      ],
-      [
-        "Lei_9613/98",
-        "TRF-4"
+        "Lei 12.850/2013",
+        "Organização Criminosa"
       ],
       [
         "Colaboração Premiada",
-        "Homologação Judicial"
-      ],
-      [
-        "Marcos_Aurélio_Silva",
-        "TRF-4"
+        "Ministério Público"
       ],
       [
         "Delegacia_Crimes_Organizados",
-        "Juízo_da_2ª_Vara_Criminal"
+        "Organização_Criminosa"
+      ],
+      [
+        "Charles_Sanders_Peirce",
+        "Raciocínio_Abdutivo"
+      ],
+      [
+        "Ferramentas_Forenses",
+        "Investigador"
       ],
       [
         "CNJ",
         "Prova_Digital"
       ],
       [
-        "Prof.Dr._Antonio_Magalhães_Gomes_Filho",
-        "Teoria_Prova"
+        "Criptomoedas",
+        "Produto_Crime"
       ],
       [
-        "Delegacia de Crimes Organizados",
-        "Departamento de Inteligência Policial"
+        "ANPP",
+        "Ação_Penal"
       ],
       [
-        "Manual",
+        "Ministério_da_Justiça",
         "SENASP"
       ],
       [
-        "Peirce",
-        "Raciocínio_Abdutivo"
+        "Delegacia de Crimes Organizados",
+        "Operação Integração"
       ],
       [
-        "Lavagem_Dinheiro",
-        "Lei_9613/98"
+        "Acordo de Colaboração",
+        "Homologação Judicial"
+      ],
+      [
+        "Grupo_de_Pesquisa_em_Justiça_Negociada",
+        "USP"
       ],
       [
         "ANPP",
         "Colaboração_Premiada"
       ],
       [
-        "Interceptação Telefônica",
-        "Investigação"
+        "HC 127.483",
+        "STF"
+      ],
+      [
+        "Departamento de Inteligência Policial",
+        "Infiltração"
+      ],
+      [
+        "Manual",
+        "SENASP"
+      ],
+      [
+        "Acordo de Colaboração",
+        "Ministério Público Federal"
+      ],
+      [
+        "ANPP",
+        "Lei_13964/2019"
+      ],
+      [
+        "Delegacia_Crimes_Organizados",
+        "Juízo_da_2ª_Vara_Criminal"
+      ],
+      [
+        "Convicção_Além_Dúvida",
+        "Standard_Probatório"
+      ],
+      [
+        "Ministério Público Federal",
+        "Vara Federal Curitiba"
+      ],
+      [
+        "Informações_Abertas",
+        "OSINT"
+      ],
+      [
+        "Marcos_Aurélio_Silva",
+        "TRF-4"
       ],
       [
         "Autopsy",
@@ -135,44 +123,40 @@
       ],
       [
         "ANPP",
-        "Grupo_de_Pesquisa_em_Justiça_Negociada_"
+        "Ministério_Público"
       ],
       [
-        "Delegacia_Crimes_Organizados",
-        "Organização_Criminosa"
+        "Marcos_Aurélio_Silva",
+        "Tráfico_Entorpecentes"
       ],
       [
-        "Convicção_Além_Dúvida",
-        "Standard_Probatório"
+        "Criptomoedas",
+        "Organização Criminosa"
       ],
       [
-        "Departamento de Inteligência Policial",
-        "Operação Integração"
+        "Criptomoedas",
+        "Marcos_Aurélio_Silva"
       ],
       [
-        "CPP",
-        "Prova_Digital"
+        "Perito",
+        "Relatório_Pericial"
       ],
       [
-        "Ministério_da_Justiça",
-        "Open_Source_Intelligence"
-      ],
-      [
-        "Ferramentas_Forenses",
-        "Investigador"
-      ],
-      [
-        "Ministério_da_Justiça",
+        "Ministério_Justiça",
         "SENASP"
       ],
       [
-        "Acordo de Colaboração Premiada",
-        "Ministério Público Federal"
+        "Prof._Dr._Antonio_Magalhães_Gomes_Filho",
+        "Teoria_da_Prova"
+      ],
+      [
+        "Ferrajoli",
+        "Garantismo_Penal"
       ]
     ],
-    "count": 42,
-    "create_time": 1781616406,
-    "update_time": 1781616406,
+    "count": 38,
+    "create_time": 1781805410,
+    "update_time": 1781805410,
     "_id": "doc-3fb006401d6140fd918a731354a97feb"
   }
 }

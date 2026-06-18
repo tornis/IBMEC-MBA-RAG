@@ -131,6 +131,11 @@ lightrag-server
 - **Erro de dimensão de embedding:** o grafo foi indexado com outro modelo (ex.: nomic,
   768). Reindexe com bge-m3 (`01_indexar_grafo.py --recriar`) — embedding e dimensão
   precisam ser os mesmos da indexação.
+- **`json: unsupported value: NaN` (erro 500) ao indexar com bge-m3:** bug conhecido do
+  Ollama (o `bge-m3` gera NaN em alguns embeddings, ligado ao flash attention). Corrija
+  desligando o flash attention e reiniciando o Ollama: feche o Ollama, rode
+  `setx OLLAMA_FLASH_ATTENTION 0` (Windows) e reabra; depois `01_indexar_grafo.py --recriar`.
+  Se persistir, atualize o Ollama (+ `ollama pull bge-m3`) ou troque para `nomic-embed-text`.
 - **Rerank dá erro 401/403:** chave da Jina/Cohere ausente ou inválida — preencha
   `RERANK_BINDING_API_KEY` ou use `RERANK_BINDING=null`.
 - **LLM lento/timeout:** confirme a chave Groq e o modelo `llama-3.3-70b-versatile`

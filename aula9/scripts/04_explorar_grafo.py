@@ -27,10 +27,7 @@ _comum.carregar_env()
 
 
 def carregar_grafo():
-    if not _comum.grafo_existe():
-        raise FileNotFoundError(
-            f"Grafo nao encontrado em {_comum.GRAPHML}. Rode antes: python 01_indexar_grafo.py")
-    return nx.read_graphml(_comum.GRAPHML)
+    return _comum.ler_graphml()   # leitura robusta (limpa null bytes/lixo apos </graphml>)
 
 
 def rotulo(g, n):
