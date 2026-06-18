@@ -6,5 +6,6 @@ aula2/datasets/acordao-completo-2026.csv
 __pycache__/
 .pyc
 .png
+aula9/rag_storage/*
 
 
