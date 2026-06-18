@@ -59,7 +59,7 @@ mesmo grafo dos scripts, vamos iniciar o servidor de dentro de `aula9/`.
 A partir da pasta `aula9/` (assim `WORKING_DIR=./rag_storage` aponta para o grafo dos scripts):
 
 ```bash
-cd aula9
+cd aula9\server
 lightrag-server
 ```
 
