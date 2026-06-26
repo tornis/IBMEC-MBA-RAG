@@ -82,9 +82,15 @@ python cliente_exemplo.py algum_documento.pdf
 # ou a doc interativa:  http://localhost:8000/docs
 ```
 
-A **interface Gradio** (`interface.py`) tem 3 abas: **Ingestão** (upload + relatório da
-decisão, com override de destino e de chunking), **Consulta** (pergunta → resposta + fontes)
-e **Status** (`/health`). Ela só consome a API — não duplica lógica de RAG.
+A **interface Gradio** (`interface.py`) tem as abas: **Ingestão** (upload + relatório da
+decisão, com override de destino e de chunking), **Consulta** (pergunta → resposta + fontes),
+**Grafo (LightRAG)** e **Status** (`/health`). Ela só consome a API — não duplica lógica de RAG.
+
+A aba **Grafo** só aparece se já existir um grafo no LightRAG (a interface checa `GET /graph`
+no startup). Ela exibe a visualização interativa (`GET /graph/html`, vis-network) num iframe,
+mais as estatísticas (nº de nós/arestas e entidades mais conectadas). Se você criar o grafo
+depois de abrir a interface (uma ingestão com destino `grafo`), reinicie o `interface.py`
+para a aba surgir.
 
 ## Endpoints
 
@@ -92,6 +98,8 @@ e **Status** (`/health`). Ela só consome a API — não duplica lógica de RAG.
 |---|---|---|
 | POST | `/ingestao` | upload de documento → extrai (agente) → indexa (heurística) → **relatório da decisão** |
 | POST | `/consulta` | pergunta → resposta RAG + fontes (roteado p/ OpenSearch ou grafo) |
+| GET | `/graph` | dados do grafo do LightRAG (JSON): `exists`, nº de nós/arestas, hubs, nós/arestas |
+| GET | `/graph/html` | visualização interativa do grafo (vis-network) — usada num iframe pela interface |
 | GET | `/health` | status de OpenSearch, Groq, embedding, LangFuse |
 | GET | `/metrics` | contadores (ingestões, consultas, erros, uptime) |
 

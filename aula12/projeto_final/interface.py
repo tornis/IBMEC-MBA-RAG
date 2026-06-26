@@ -96,6 +96,40 @@ def status():
 
 
 # ---------------------------------------------------------------------------
+# Aba Grafo (LightRAG) - so aparece se existir grafo
+# ---------------------------------------------------------------------------
+def grafo_info():
+    """Consulta /graph. Retorna (existe, dict). Usado no startup e no botao Atualizar."""
+    try:
+        d = requests.get(f"{API_URL}/graph", headers=_headers(), timeout=60).json()
+        return bool(d.get("exists")), d
+    except Exception as e:
+        return False, {"erro": str(e)}
+
+
+def _iframe_grafo():
+    """HTML com um iframe que carrega a visualizacao interativa servida pela API."""
+    return (f'<iframe src="{API_URL}/graph/html" '
+            'style="width:100%;height:600px;border:1px solid #ddd;border-radius:8px;"></iframe>')
+
+
+def atualizar_grafo():
+    existe, d = grafo_info()
+    if not existe:
+        return "Nenhum grafo no LightRAG ainda. Ingira um documento com destino 'grafo'.", "", {}
+    hubs = "\n".join(f"- {h['no']} (grau {h['grau']})" for h in d.get("top_hubs", [])) or "(sem hubs)"
+    md = (f"### Grafo de Conhecimento (LightRAG)\n"
+          f"- **Nos:** {d['n_nodes']}  |  **Arestas:** {d['n_edges']}  "
+          f"(exibindo {d.get('exibindo_nos', 0)} mais conectados)\n\n"
+          f"**Entidades mais conectadas:**\n{hubs}")
+    return md, _iframe_grafo(), d
+
+
+# checagem no startup: a aba so e criada se houver grafo
+_GRAFO_EXISTE, _GRAFO_DADOS = grafo_info()
+
+
+# ---------------------------------------------------------------------------
 # UI
 # ---------------------------------------------------------------------------
 with gr.Blocks(title="Projeto Final - RAG Juridico (Aula 12)") as demo:
@@ -125,10 +159,23 @@ with gr.Blocks(title="Projeto Final - RAG Juridico (Aula 12)") as demo:
         out_q_json = gr.JSON(label="Resposta completa (JSON)")
         btn_q.click(consultar, [pergunta, destino, top_k], [out_q_md, out_q_json])
 
+    # Aba do grafo: criada SOMENTE se existir grafo no LightRAG (checado no startup)
+    if _GRAFO_EXISTE:
+        with gr.Tab("3) Grafo (LightRAG)"):
+            gr.Markdown("Visualizacao interativa do grafo de conhecimento construido pelo LightRAG.")
+            btn_g = gr.Button("Atualizar grafo", variant="primary")
+            out_g_md = gr.Markdown()
+            out_g_html = gr.HTML(_iframe_grafo())   # ja carrega ao abrir
+            out_g_json = gr.JSON(label="Estatisticas (JSON)")
+            btn_g.click(atualizar_grafo, None, [out_g_md, out_g_html, out_g_json])
+
     with gr.Tab("Status"):
         btn_s = gr.Button("Checar /health")
         out_s = gr.JSON()
         btn_s.click(status, None, out_s)
+        if not _GRAFO_EXISTE:
+            gr.Markdown("_A aba **Grafo** aparece automaticamente quando existir um grafo no "
+                        "LightRAG (ingestao com destino 'grafo'). Reinicie a interface apos criar._")
 
 if __name__ == "__main__":
     demo.launch(server_port=GRADIO_PORT)

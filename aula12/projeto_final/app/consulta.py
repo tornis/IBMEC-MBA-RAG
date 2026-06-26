@@ -8,8 +8,6 @@ destino:
 Mantido simples: monta o contexto, gera a resposta e devolve as fontes.
 """
 
-import asyncio
-
 from . import config, indexacao
 from .log import obter_logger
 
@@ -65,7 +63,7 @@ def consultar_grafo(pergunta):
             return await rag.aquery(pergunta, param=QueryParam(mode="hybrid"))
         finally:
             await rag.finalize_storages()
-    resposta = asyncio.run(_run())
+    resposta = indexacao.rodar_async(_run)  # seguro com ou sem event loop ativo
     return resposta, [{"id": "grafo", "trecho": "(resposta sintetizada do grafo de conhecimento)"}]
 
 

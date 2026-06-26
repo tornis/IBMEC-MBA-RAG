@@ -14,11 +14,13 @@ Autenticacao opcional por API key (header X-API-Key) se API_KEYS estiver no .env
 Rodar:  uvicorn app.main:app --reload    (de dentro de projeto_final/)
 """
 
+import asyncio
 import time
 
 from fastapi import FastAPI, File, Header, HTTPException, UploadFile
+from fastapi.responses import HTMLResponse
 
-from . import config, consulta, extracao, indexacao
+from . import config, consulta, extracao, grafo, indexacao
 from .log import configurar_logging, obter_logger
 from .modelos import (ConsultaRequest, ConsultaResponse, IngestaoResponse,
                       RelatorioIngestao)
@@ -38,6 +40,43 @@ def _checar_api_key(x_api_key):
         raise HTTPException(status_code=401, detail="API key invalida (header X-API-Key).")
 
 
+def _processar_ingestao(filename, conteudo_bytes, estrategia, chunking):
+    """Trabalho PESADO e SINCRONO da ingestao (extracao + indexacao).
+
+    Roda numa THREAD (via asyncio.to_thread no endpoint) por dois motivos:
+      1) o LightRAG usa asyncio.run() internamente, que NAO pode rodar dentro do
+         event loop do FastAPI ('asyncio.run() cannot be called from a running event loop');
+         numa thread separada nao ha loop ativo, entao funciona.
+      2) nao trava o event loop durante Docling/embeddings/LightRAG (operacoes longas).
+    """
+    destino = config.PASTA_UPLOADS / filename
+    t0 = time.time()
+    log.info("== /ingestao recebido: arquivo=%s (estrategia=%s, chunking=%s) ==",
+             filename, estrategia, chunking)
+    try:
+        destino.write_bytes(conteudo_bytes)
+        # 1) AGENTE decide a tecnica e extrai
+        sinais, tecnica, complexidade, motivo, dados = extracao.decidir_e_extrair(str(destino))
+        # 2) HEURISTICA decide destino + (no OpenSearch) a melhor tecnica de chunking, e indexa
+        estr = indexacao.indexar(dados, meta={"arquivo": filename},
+                                 destino_override=estrategia, chunking_override=chunking)
+        extracao.limpar_cache(str(destino))
+        METRICAS["ingestoes"] += 1
+        log.info("== /ingestao OK: arquivo=%s, destino=%s, chunking=%s, chunks=%d (%.1fs) ==",
+                 filename, estr["destino"], estr["chunking"], estr["n_chunks"], time.time() - t0)
+        relatorio = RelatorioIngestao(
+            arquivo=filename, complexidade=complexidade, tecnica_extracao=tecnica,
+            motivo_extracao=motivo, estrutura=sinais,
+            destino=estr["destino"], motivo_destino=estr["motivo_destino"],
+            chunking=estr["chunking"], motivo_chunking=estr["motivo_chunking"],
+            n_chunks=estr["n_chunks"], n_caracteres=len(dados.get("conteudo", "")))
+        return IngestaoResponse(ok=True, relatorio=relatorio)
+    except Exception as e:
+        METRICAS["erros"] += 1
+        log.exception("== /ingestao FALHOU: arquivo=%s ==", filename)
+        return IngestaoResponse(ok=False, erro=str(e))
+
+
 @app.post("/ingestao", response_model=IngestaoResponse)
 async def ingestao(arquivo: UploadFile = File(...), estrategia: str = "auto",
                    chunking: str = "auto", x_api_key: str = Header(default="")):
@@ -47,33 +86,10 @@ async def ingestao(arquivo: UploadFile = File(...), estrategia: str = "auto",
     chunking:   auto | fixo | recursivo | sentenca_janela | semantico | hierarquico
     """
     _checar_api_key(x_api_key)
-    destino = config.PASTA_UPLOADS / arquivo.filename
-    t0 = time.time()
-    log.info("== /ingestao recebido: arquivo=%s (estrategia=%s, chunking=%s) ==",
-             arquivo.filename, estrategia, chunking)
-    try:
-        destino.write_bytes(await arquivo.read())
-        # 1) AGENTE decide a tecnica e extrai
-        sinais, tecnica, complexidade, motivo, dados = extracao.decidir_e_extrair(str(destino))
-        # 2) HEURISTICA decide destino + (no OpenSearch) a melhor tecnica de chunking, e indexa
-        estr = indexacao.indexar(dados, meta={"arquivo": arquivo.filename},
-                                 destino_override=estrategia, chunking_override=chunking)
-        extracao.limpar_cache(str(destino))
-        METRICAS["ingestoes"] += 1
-        log.info("== /ingestao OK: arquivo=%s, destino=%s, chunking=%s, chunks=%d (%.1fs) ==",
-                 arquivo.filename, estr["destino"], estr["chunking"], estr["n_chunks"],
-                 time.time() - t0)
-        relatorio = RelatorioIngestao(
-            arquivo=arquivo.filename, complexidade=complexidade, tecnica_extracao=tecnica,
-            motivo_extracao=motivo, estrutura=sinais,
-            destino=estr["destino"], motivo_destino=estr["motivo_destino"],
-            chunking=estr["chunking"], motivo_chunking=estr["motivo_chunking"],
-            n_chunks=estr["n_chunks"], n_caracteres=len(dados.get("conteudo", "")))
-        return IngestaoResponse(ok=True, relatorio=relatorio)
-    except Exception as e:
-        METRICAS["erros"] += 1
-        log.exception("== /ingestao FALHOU: arquivo=%s ==", arquivo.filename)
-        return IngestaoResponse(ok=False, erro=str(e))
+    conteudo_bytes = await arquivo.read()
+    # descarrega o trabalho sincrono/pesado numa thread (ver _processar_ingestao)
+    return await asyncio.to_thread(_processar_ingestao, arquivo.filename,
+                                   conteudo_bytes, estrategia, chunking)
 
 
 @app.post("/consulta", response_model=ConsultaResponse)
@@ -91,6 +107,35 @@ def consulta_endpoint(req: ConsultaRequest, x_api_key: str = Header(default=""))
         METRICAS["erros"] += 1
         log.exception("== /consulta FALHOU ==")
         raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/graph")
+def graph(limite: int = 150, x_api_key: str = Header(default="")):
+    """Dados do grafo de conhecimento do LightRAG (JSON): existencia, estatisticas, nos/arestas.
+
+    'exists' indica se ha grafo gravado - a interface usa isso para mostrar (ou nao) a aba.
+    'limite' = numero maximo de nos exibidos (os de maior grau).
+    """
+    _checar_api_key(x_api_key)
+    try:
+        dados = grafo.ler_grafo(limite_nos=limite)
+        log.info("== /graph: exists=%s, nos=%d, arestas=%d ==",
+                 dados["exists"], dados["n_nodes"], dados["n_edges"])
+        return dados
+    except Exception as e:
+        log.exception("== /graph FALHOU ==")
+        return {"exists": False, "erro": str(e), "n_nodes": 0, "n_edges": 0,
+                "top_hubs": [], "nodes": [], "edges": []}
+
+
+@app.get("/graph/html", response_class=HTMLResponse)
+def graph_html(limite: int = 150):
+    """Visualizacao interativa (vis-network) do grafo - usada num iframe pela interface."""
+    try:
+        return grafo.html_vis(limite_nos=limite)
+    except Exception as e:
+        log.exception("== /graph/html FALHOU ==")
+        return HTMLResponse(f"<html><body><p>Erro ao montar o grafo: {e}</p></body></html>")
 
 
 @app.get("/health")
